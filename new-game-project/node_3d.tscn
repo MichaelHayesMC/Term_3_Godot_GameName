@@ -17,7 +17,7 @@ glow_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_noarx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
 
@@ -30,14 +30,16 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1635802988]
 environment = SubResource("Environment_noarx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1150942541]
+[node name="Node3D" type="Node3D" parent="." unique_id=1131920864]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=1150942541]
 physics_material_override = SubResource("PhysicsMaterial_a202f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1521952302]
-shape = SubResource("WorldBoundaryShape3D_noarx")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1521952302]
+shape = SubResource("BoxShape3D_a202f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=931718446]
-transform = Transform3D(19.855967, 0, 0, 0, 0.061364587, 0, 0, 0, 20, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=931718446]
 mesh = SubResource("BoxMesh_4xowi")
 
 [node name="CharacterBody3D" parent="." unique_id=1438579107 instance=ExtResource("1_a202f")]
