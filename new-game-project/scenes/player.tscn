@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddc8k6gybq8ur"]
 
 [ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://scripts/character_body_3d.gd" id="1_iwpo4"]
+[ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
 
@@ -18,6 +19,7 @@ albedo_color = Color(0, 1, 0, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1438579107]
 script = ExtResource("1_iwpo4")
+Bullet = ExtResource("2_g2els")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
 shape = SubResource("CapsuleShape3D_bu0v1")
@@ -34,4 +36,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1183849808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.297776)
 shape = SubResource("BoxShape3D_3vyb7")
+disabled = true
 debug_fill = false
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=683210559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.297776)

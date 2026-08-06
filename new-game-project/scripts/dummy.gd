@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var camera_3d: Camera3D = $"../Camera3D"
 
+@onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
+
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
@@ -12,9 +14,13 @@ func _physics_process(delta: float) -> void:
 	query2.collide_with_areas = true
 	
 	var result = space_state.intersect_ray(query2)
-	
-	var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
-	if result.collider == $Dummy_hitbox:
+
+func _on_dummy_hitbox_area_entered(area: Area3D) -> void:
+	if area.name == "Bullet_collider":
 		mat.albedo_color = Color(0.871, 0.157, 0.451, 1.0)
-	else:
+
+
+
+func _on_dummy_hitbox_area_exited(area: Area3D) -> void:
+	if area.name == "Bullet_collider":
 		mat.albedo_color = Color(0.255, 0.412, 0.71, 1.0)

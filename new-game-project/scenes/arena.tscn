@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/player.tscn" id="1_e05a3"]
 [ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://scenes/dummy.tscn" id="2_olpmc"]
 [ext_resource type="PackedScene" uid="uid://bq6dpy3wi7wy4" path="res://scenes/weapon.tscn" id="2_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_xdvfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,6 +57,9 @@ shape = SubResource("WorldBoundaryShape3D_tyffc")
 transform = Transform3D(-100, 0, 0, 0, -0.1, 0, 0, 0, -100, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_4xowi")
+
+[node name="RigidBody3D" parent="StaticBody3D" unique_id=1417648668 instance=ExtResource("2_xdvfk")]
+transform = Transform3D(0.015460311, 0.41570944, 0.9093661, -0.0070665367, 0.9094975, -0.41564938, -0.9998555, 0, 0.01699874, 6.7297516, 2.965632, 3.9385858)
 
 [node name="Velocity_preview" type="Label" parent="." unique_id=415163890]
 offset_right = 431.0

@@ -28,3 +28,6 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dummy_hitbox" unique_id=1752084525]
 shape = SubResource("CapsuleShape3D_3qfmy")
+
+[connection signal="area_entered" from="Dummy_hitbox" to="." method="_on_dummy_hitbox_area_entered"]
+[connection signal="area_exited" from="Dummy_hitbox" to="." method="_on_dummy_hitbox_area_exited"]

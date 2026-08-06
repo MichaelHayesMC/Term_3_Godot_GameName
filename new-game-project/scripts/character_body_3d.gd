@@ -7,6 +7,8 @@ extends CharacterBody3D
 @onready var player_rotation: Label = $"../Player_rotation"
 @onready var camera_3d: Camera3D = $"../Camera3D"
 
+@export var Bullet : PackedScene
+
 const Speed := 75.0
 const Friction := -40.0
 const TopSpeed := 10.0
@@ -82,3 +84,11 @@ func _physics_process(delta: float) -> void:
 	velocity_preview.text = "Velocity: x" + str(int(velocity.x)) + " y" + str(int(velocity.y)) + " z" + str(int(velocity.z))
 	
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("left_click"):
+		var bullet = Bullet.instantiate()
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_transform = $Marker3D.global_transform
+		bullet.global_rotation = $".".global_rotation
+		

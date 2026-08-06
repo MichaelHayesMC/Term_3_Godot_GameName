@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dtclgpudk4ih3"]
+
+[ext_resource type="Script" uid="uid://r2klvmola8m2" path="res://scripts/bullet.gd" id="1_mkf8s"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h1aey"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mkf8s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mkf8s"]
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=1417648668]
+script = ExtResource("1_mkf8s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=901717452]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_h1aey")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1837619337]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.47841716)
+mesh = SubResource("BoxMesh_mkf8s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=523985666]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_mkf8s")
+
+[node name="Bullet_collider" type="Area3D" parent="." unique_id=1150435726]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet_collider" unique_id=481059487]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_mkf8s")
+
+[connection signal="body_entered" from="Bullet_collider" to="." method="_on_bullet_collider_body_entered"]
