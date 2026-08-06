@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		current_preview.text = "Current_Input: Down"
 		if velocity.z > TopSpeed:
 			velocity.z = TopSpeed
-	elif velocity.z > 0:
+	elif velocity.z > 0 and is_on_floor():
 		velocity.z += Friction * delta
 		if velocity.z < 0:
 			velocity.z = 0
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z -= Speed * delta
 		if velocity.z < -TopSpeed:
 			velocity.z = -TopSpeed
-	elif velocity.z < 0:
+	elif velocity.z < 0 and is_on_floor():
 		velocity.z -= Friction * delta
 		if velocity.z > 0:
 			velocity.z = 0
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		current_preview.text = "Current_Input: Right"
 		if velocity.x > TopSpeed:
 			velocity.x = TopSpeed
-	elif velocity.x > 0:
+	elif velocity.x > 0 and is_on_floor():
 		velocity.x += Friction * delta
 		if velocity.x < 0:
 			velocity.x = 0
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x -= Speed * delta
 		if velocity.x < -TopSpeed:
 			velocity.x = -TopSpeed
-	elif velocity.x < 0:
+	elif velocity.x < 0 and is_on_floor():
 		velocity.x -= Friction * delta
 		if velocity.x > 0:
 			velocity.x = 0
