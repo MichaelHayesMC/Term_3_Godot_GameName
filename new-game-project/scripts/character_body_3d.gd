@@ -2,21 +2,42 @@ extends CharacterBody3D
 
 @onready var current_preview: Label = $"../Current_preview"
 @onready var velocity_preview: Label = $"../Velocity_preview"
-@onready var previous_preview: Label = $"../Previous_preview"
+@onready var mouse_loc: Label = $"../Mouse_loc"
+@onready var player_direction: Label = $"../Player_direction"
+@onready var camera_3d: Camera3D = $"../Camera3D"
 
-const Speed := 50.0
+const Speed := 75.0
 const Friction := -40.0
-const TopSpeed := 10
-const Jump_Strength := 15
-const Gravity := 50
+const TopSpeed := 10.0
+const Jump_Strength := 15.0
+const Gravity := 50.0
 
 
 func _physics_process(delta: float) -> void:
+	mouse_loc.text = "Mouse Location: " + str(get_viewport().get_mouse_position()) 
+	player_direction.text = "Player Location: " + str(self.position)
+	
+	var space_state = get_world_3d().direct_space_state
+	var mousepos = get_viewport().get_mouse_position()
+
+	var origin = camera_3d.project_ray_origin(mousepos)
+	var end = origin + camera_3d.project_ray_normal(mousepos) * 1000
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_areas = true
+
+	var result = space_state.intersect_ray(query)
+	
+	#result.position.y = 1
+	
+	#print(result.position)
+	
+	look_at(result.position)
+	
+	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y += Jump_Strength
 	else:
 		velocity.y -= Gravity * delta
-	
 	
 	if Input.is_action_pressed("move_down"):
 		velocity.z += Speed * delta
