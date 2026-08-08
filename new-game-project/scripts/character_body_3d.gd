@@ -15,7 +15,6 @@ const TopSpeed := 10.0
 const Jump_Strength := 15.0
 const Gravity := 50.0
 
-
 func _physics_process(delta: float) -> void:
 	mouse_loc.text = "Mouse Location: " + str(get_viewport().get_mouse_position()) 
 	player_direction.text = "Player Location: " + str(self.position)
@@ -91,4 +90,6 @@ func _input(_event: InputEvent) -> void:
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_transform = $Marker3D.global_transform
 		bullet.global_rotation = $".".global_rotation
+		
+#		get_slide_collision()
 		

@@ -24,7 +24,7 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyffc"]
-font_size = 26
+font_size = 17
 font_color = Color(0, 0.5568628, 0, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1025241619]
@@ -37,7 +37,7 @@ shadow_enabled = true
 environment = SubResource("Environment_noarx")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=792609085]
-transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 49.151608, 45.977966)
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 50.17838, 42.726532)
 fov = 20.0
 size = 10.0
 
@@ -50,10 +50,11 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1521952302]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_tyffc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=931718446]
-transform = Transform3D(-100, 0, 0, 0, -0.1, 0, 0, 0, -100, 0, 0, 0)
+transform = Transform3D(-20, 0, 0, 0, -0.04, 0, 0, 0, -20, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_4xowi")
 
@@ -65,49 +66,84 @@ text = "Velocity = #"
 label_settings = SubResource("LabelSettings_tyffc")
 
 [node name="Current_preview" type="Label" parent="." unique_id=1266529607]
-offset_left = -2.0
-offset_top = 34.0
-offset_right = 429.0
-offset_bottom = 94.0
+offset_top = 22.0
+offset_right = 431.0
+offset_bottom = 82.0
 size_flags_horizontal = 0
 text = "Current_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
 
 [node name="Mouse_loc" type="Label" parent="." unique_id=1079711593]
-offset_left = -2.0
-offset_top = 72.0
-offset_right = 429.0
-offset_bottom = 132.0
+offset_top = 46.0
+offset_right = 431.0
+offset_bottom = 106.0
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
 
 [node name="Player_direction" type="Label" parent="." unique_id=1565483740]
-offset_left = 1.0
-offset_top = 112.0
-offset_right = 432.0
-offset_bottom = 172.0
+offset_top = 68.0
+offset_right = 431.0
+offset_bottom = 128.0
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
 
 [node name="Player_rotation" type="Label" parent="." unique_id=1816384639]
-offset_left = 1.0
-offset_top = 152.0
-offset_right = 432.0
-offset_bottom = 212.0
+offset_top = 93.0
+offset_right = 431.0
+offset_bottom = 153.0
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
 
 [node name="RigidBody3D" parent="." unique_id=2104336907 instance=ExtResource("2_wl4x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8448186, 0.5, 0.09681654)
-
-[node name="RigidBody3D2" parent="." unique_id=391419136 instance=ExtResource("2_wl4x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.678013, 0.5, 1.3099527)
-
-[node name="RigidBody3D3" parent="." unique_id=537413001 instance=ExtResource("2_wl4x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.573575, 0.5, 1.8098397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49276, 1.6876602, 4.813659)
 
 [node name="Dummy" parent="." unique_id=1922773541 instance=ExtResource("2_olpmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1442981254]
+offset_left = 933.0
+offset_top = 12.0
+offset_right = 995.0
+offset_bottom = 74.0
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=1231619401]
+offset_left = 860.0
+offset_top = 12.0
+offset_right = 922.0
+offset_bottom = 74.0
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=1391913386]
+offset_left = 46.999977
+offset_top = 581.0
+offset_right = 81.71067
+offset_bottom = 615.7107
+rotation = 0.7853982
+
+[node name="ColorRect9" type="ColorRect" parent="." unique_id=48330440]
+offset_left = 101.99999
+offset_top = 581.0
+offset_right = 136.7107
+offset_bottom = 615.7107
+rotation = 0.7853982
+
+[node name="ColorRect10" type="ColorRect" parent="." unique_id=717276115]
+offset_left = 156.00003
+offset_top = 581.0
+offset_right = 190.71072
+offset_bottom = 615.7107
+rotation = 0.7853982
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=733918545]
+offset_left = 1004.0
+offset_top = 12.0
+offset_right = 1066.0
+offset_bottom = 74.0
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=1598102788]
+offset_left = 1079.0
+offset_top = 12.0
+offset_right = 1141.0
+offset_bottom = 74.0
