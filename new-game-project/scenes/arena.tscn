@@ -22,14 +22,14 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_tyffc"]
-font_size = 21
-font_color = Color(0, 0.5568628, 0, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_olpmc"]
 size = Vector3(19.939697, 4.947754, 0.10058594)
 
 [sub_resource type="BoxMesh" id="BoxMesh_olpmc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tyffc"]
+font_size = 35
+font_color = Color(0, 0.5568628, 0, 1)
 
 [node name="Game" type="Node3D" unique_id=1025241619]
 
@@ -70,144 +70,6 @@ mesh = SubResource("BoxMesh_4xowi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
 camera_3d = NodePath("../Camera_Anchor/Camera3D")
 
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=1442981254]
-anchors_preset = -1
-anchor_left = 0.8098958
-anchor_top = 0.018518519
-anchor_right = 0.8637153
-anchor_bottom = 0.11419753
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect7" type="ColorRect" parent="." unique_id=1231619401]
-anchors_preset = -1
-anchor_left = 0.75
-anchor_top = 0.018518519
-anchor_right = 0.8038194
-anchor_bottom = 0.11419753
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect11" type="ColorRect" parent="." unique_id=377520041]
-anchors_preset = -1
-anchor_left = 0.4079861
-anchor_right = 0.5920139
-anchor_bottom = 0.13271604
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect8" type="ColorRect" parent="." unique_id=1391913386]
-anchors_preset = -1
-anchor_left = 0.026
-anchor_top = 0.89400005
-anchor_right = 0.055000003
-anchor_bottom = 0.94600004
-offset_left = 17.047977
-offset_top = -16.74524
-offset_right = 31.384907
-offset_bottom = -2.696289
-grow_vertical = 0
-rotation = 0.7853982
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect9" type="ColorRect" parent="." unique_id=1326412061]
-anchors_preset = -1
-anchor_left = 0.09
-anchor_top = 0.89500004
-anchor_right = 0.119
-anchor_bottom = 0.947
-offset_left = 16.319977
-offset_top = -16.960022
-offset_right = 30.656937
-offset_bottom = -2.9110718
-grow_vertical = 0
-rotation = 0.7853982
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect10" type="ColorRect" parent="." unique_id=1890536444]
-anchors_preset = -1
-anchor_left = 0.15100001
-anchor_top = 0.89500004
-anchor_right = 0.18
-anchor_bottom = 0.947
-offset_left = 17.047989
-offset_top = -16.960022
-offset_right = 31.384918
-offset_bottom = -2.9110718
-grow_vertical = 0
-rotation = 0.7853982
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect5" type="ColorRect" parent="." unique_id=733918545]
-anchors_preset = -1
-anchor_left = 0.8689236
-anchor_top = 0.018518519
-anchor_right = 0.9227431
-anchor_bottom = 0.11419753
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect6" type="ColorRect" parent="." unique_id=1598102788]
-anchors_preset = -1
-anchor_left = 0.9296875
-anchor_top = 0.018518519
-anchor_right = 0.9835069
-anchor_bottom = 0.11419753
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Velocity_preview" type="Label" parent="." unique_id=415163890]
-anchors_preset = -1
-anchor_left = 0.00086805556
-anchor_top = 0.010802469
-anchor_right = 0.13194445
-anchor_bottom = 0.06481481
-size_flags_horizontal = 0
-text = "Velocity = #"
-label_settings = SubResource("LabelSettings_tyffc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Current_preview" type="Label" parent="." unique_id=1266529607]
-anchors_preset = -1
-anchor_left = 0.00086805556
-anchor_top = 0.055555556
-anchor_right = 0.19097222
-anchor_bottom = 0.1095679
-size_flags_horizontal = 0
-text = "Current_Input = #"
-label_settings = SubResource("LabelSettings_tyffc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Mouse_loc" type="Label" parent="." unique_id=1079711593]
-anchors_preset = -1
-anchor_top = 0.10339506
-anchor_right = 0.19618055
-anchor_bottom = 0.1574074
-size_flags_horizontal = 0
-text = "Previous_Input = #"
-label_settings = SubResource("LabelSettings_tyffc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Player_direction" type="Label" parent="." unique_id=1565483740]
-anchors_preset = -1
-anchor_top = 0.1558642
-anchor_right = 0.19965278
-anchor_bottom = 0.20987654
-size_flags_horizontal = 0
-text = "Previous_Input = #"
-label_settings = SubResource("LabelSettings_tyffc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Player_rotation" type="Label" parent="." unique_id=1816384639]
-anchors_preset = -1
-anchor_top = 0.2037037
-anchor_right = 0.2048611
-anchor_bottom = 0.25771606
-size_flags_horizontal = 0
-text = "Previous_Input = #"
-label_settings = SubResource("LabelSettings_tyffc")
-metadata/_edit_use_anchors_ = true
-
 [node name="Wall" type="StaticBody3D" parent="." unique_id=143633500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3008049, 0)
 
@@ -218,3 +80,122 @@ shape = SubResource("BoxShape3D_olpmc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=553369499]
 transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
 mesh = SubResource("BoxMesh_olpmc")
+
+[node name="Timer_HUD" type="ColorRect" parent="." unique_id=377520041]
+anchors_preset = -1
+anchor_left = 0.4079861
+anchor_right = 0.5920139
+anchor_bottom = 0.13271604
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=520585844]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -469.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 124.0
+grow_horizontal = 0
+theme_override_constants/separation = 15
+
+[node name="Player_1_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=334155577]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player_2_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=1744926765]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player_3_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=1869327985]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player_4_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=758924291]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Modifier_1_HUD" type="ColorRect" parent="." unique_id=1391913386]
+anchors_preset = -1
+anchor_left = 0.022000002
+anchor_top = 0.901
+anchor_right = 0.048
+anchor_bottom = 0.947
+offset_left = 24.727978
+offset_top = -24.305176
+offset_right = 44.824905
+offset_bottom = -3.776245
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="Modifier_2_HUD" type="ColorRect" parent="." unique_id=1326412061]
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.901
+anchor_right = 0.1
+anchor_bottom = 0.947
+offset_left = 24.119995
+offset_top = -24.440002
+offset_right = 46.136963
+offset_bottom = -3.9110718
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="Modifier_3_HUD" type="ColorRect" parent="." unique_id=1890536444]
+anchors_preset = -1
+anchor_left = 0.127
+anchor_top = 0.901
+anchor_right = 0.15300001
+anchor_bottom = 0.947
+offset_left = 25.128006
+offset_top = -24.439941
+offset_right = 45.224915
+offset_bottom = -3.9110107
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1497523911]
+offset_left = 1.6666666
+offset_top = 2.666667
+offset_right = 272.0
+offset_bottom = 280.0
+theme_override_constants/separation = 15
+
+[node name="Velocity_preview" type="Label" parent="VBoxContainer" unique_id=415163890]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text"
+label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Current_preview" type="Label" parent="VBoxContainer" unique_id=1266529607]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text"
+label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Mouse_loc" type="Label" parent="VBoxContainer" unique_id=1079711593]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text"
+label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player_direction" type="Label" parent="VBoxContainer" unique_id=1565483740]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text"
+label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player_rotation" type="Label" parent="VBoxContainer" unique_id=1816384639]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text"
+label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true

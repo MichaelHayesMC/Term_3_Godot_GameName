@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
-@onready var current_preview: Label = $"../Current_preview"
-@onready var velocity_preview: Label = $"../Velocity_preview"
-@onready var mouse_loc: Label = $"../Mouse_loc"
-@onready var player_direction: Label = $"../Player_direction"
-@onready var player_rotation: Label = $"../Player_rotation"
+@onready var velocity_preview: Label = $"../VBoxContainer/Velocity_preview"
+@onready var current_preview: Label = $"../VBoxContainer/Current_preview"
+@onready var mouse_loc: Label = $"../VBoxContainer/Mouse_loc"
+@onready var player_direction: Label = $"../VBoxContainer/Player_direction"
+@onready var player_rotation: Label = $"../VBoxContainer/Player_rotation"
+
 @export var camera_3d: Camera3D
 
 @export var Bullet : PackedScene
