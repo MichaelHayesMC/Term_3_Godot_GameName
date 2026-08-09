@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var mouse_loc: Label = $"../Mouse_loc"
 @onready var player_direction: Label = $"../Player_direction"
 @onready var player_rotation: Label = $"../Player_rotation"
-@onready var camera_3d: Camera3D = $"../Camera3D"
+@export var camera_3d: Camera3D
 
 @export var Bullet : PackedScene
 
@@ -88,7 +88,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		var bullet = Bullet.instantiate()
 		get_tree().current_scene.add_child(bullet)
-		bullet.global_transform = $Marker3D.global_transform
+		bullet.global_transform = $Weapon/Marker3D.global_transform
 		bullet.global_rotation = $".".global_rotation
 		
 #		get_slide_collision()

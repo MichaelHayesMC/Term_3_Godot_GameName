@@ -15,9 +15,8 @@ albedo_color = Color(0.7372549, 0.18431373, 0.22745098, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvunv"]
 albedo_color = Color(0, 1, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3vyb7"]
-
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1438579107]
+collision_layer = 2
 script = ExtResource("1_iwpo4")
 Bullet = ExtResource("2_g2els")
 
@@ -28,16 +27,13 @@ shape = SubResource("CapsuleShape3D_bu0v1")
 mesh = SubResource("CapsuleMesh_iwpo4")
 surface_material_override/0 = SubResource("StandardMaterial3D_o7tup")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1287860943]
+[node name="Weapon" type="Node3D" parent="." unique_id=1423569344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.026768684)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon" unique_id=683210559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25435662)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Weapon" unique_id=1287860943]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.4427164)
 mesh = SubResource("PrismMesh_cvunv")
 surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1183849808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.297776)
-shape = SubResource("BoxShape3D_3vyb7")
-disabled = true
-debug_fill = false
-
-[node name="Marker3D" type="Marker3D" parent="." unique_id=683210559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.297776)

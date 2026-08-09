@@ -4,7 +4,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_xasec"]
 
-[node name="RigidBody3D" type="RigidBody3D" unique_id=2104336907]
+[node name="Weapon_Pickup" type="RigidBody3D" unique_id=2104336907]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1314176152]
 shape = SubResource("BoxShape3D_6nu22")

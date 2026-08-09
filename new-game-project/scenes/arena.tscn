@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/player.tscn" id="1_e05a3"]
 [ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://scenes/dummy.tscn" id="2_olpmc"]
-[ext_resource type="PackedScene" uid="uid://bq6dpy3wi7wy4" path="res://scenes/weapon.tscn" id="2_wl4x5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,10 +23,15 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyffc"]
-font_size = 17
+font_size = 21
 font_color = Color(0, 0.5568628, 0, 1)
 
-[node name="Node3D" type="Node3D" unique_id=1025241619]
+[sub_resource type="BoxShape3D" id="BoxShape3D_olpmc"]
+size = Vector3(19.939697, 4.947754, 0.10058594)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olpmc"]
+
+[node name="Game" type="Node3D" unique_id=1025241619]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1820911538]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -36,114 +40,181 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1635802988]
 environment = SubResource("Environment_noarx")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=792609085]
-transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 50.17838, 42.726532)
-fov = 20.0
-size = 10.0
+[node name="Camera_Anchor" type="Node3D" parent="." unique_id=1562407969]
+transform = Transform3D(1, 0, 0, 0, 0.43021178, 0.90272796, 0, -0.90272796, 0.43021178, 0, 70.26976, 34.833115)
 
-[node name="CharacterBody3D" parent="." unique_id=1438579107 instance=ExtResource("1_e05a3")]
+[node name="Camera3D" type="Camera3D" parent="Camera_Anchor" unique_id=792609085]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.49127007, -0.62976074)
+fov = 25.0
+size = 27.293
+
+[node name="CharacterBody3D" parent="." unique_id=1438579107 node_paths=PackedStringArray("camera_3d") instance=ExtResource("1_e05a3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
+camera_3d = NodePath("../Camera_Anchor/Camera3D")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1150942541]
+[node name="Baseplate" type="StaticBody3D" parent="." unique_id=1150942541]
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_a202f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1521952302]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=1521952302]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_tyffc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=931718446]
-transform = Transform3D(-20, 0, 0, 0, -0.04, 0, 0, 0, -20, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate" unique_id=931718446]
+transform = Transform3D(21.213202, 0, -21.213202, 0, 0.059999995, 0, 21.213202, 0, 21.213202, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_4xowi")
 
+[node name="Dummy" parent="." unique_id=1922773541 node_paths=PackedStringArray("camera_3d") instance=ExtResource("2_olpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
+camera_3d = NodePath("../Camera_Anchor/Camera3D")
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1442981254]
+anchors_preset = -1
+anchor_left = 0.8098958
+anchor_top = 0.018518519
+anchor_right = 0.8637153
+anchor_bottom = 0.11419753
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=1231619401]
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.018518519
+anchor_right = 0.8038194
+anchor_bottom = 0.11419753
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect11" type="ColorRect" parent="." unique_id=377520041]
+anchors_preset = -1
+anchor_left = 0.4079861
+anchor_right = 0.5920139
+anchor_bottom = 0.13271604
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=1391913386]
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.89400005
+anchor_right = 0.055000003
+anchor_bottom = 0.94600004
+offset_left = 17.047977
+offset_top = -16.74524
+offset_right = 31.384907
+offset_bottom = -2.696289
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect9" type="ColorRect" parent="." unique_id=1326412061]
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.89500004
+anchor_right = 0.119
+anchor_bottom = 0.947
+offset_left = 16.319977
+offset_top = -16.960022
+offset_right = 30.656937
+offset_bottom = -2.9110718
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect10" type="ColorRect" parent="." unique_id=1890536444]
+anchors_preset = -1
+anchor_left = 0.15100001
+anchor_top = 0.89500004
+anchor_right = 0.18
+anchor_bottom = 0.947
+offset_left = 17.047989
+offset_top = -16.960022
+offset_right = 31.384918
+offset_bottom = -2.9110718
+grow_vertical = 0
+rotation = 0.7853982
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=733918545]
+anchors_preset = -1
+anchor_left = 0.8689236
+anchor_top = 0.018518519
+anchor_right = 0.9227431
+anchor_bottom = 0.11419753
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=1598102788]
+anchors_preset = -1
+anchor_left = 0.9296875
+anchor_top = 0.018518519
+anchor_right = 0.9835069
+anchor_bottom = 0.11419753
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
 [node name="Velocity_preview" type="Label" parent="." unique_id=415163890]
-offset_right = 431.0
-offset_bottom = 60.0
+anchors_preset = -1
+anchor_left = 0.00086805556
+anchor_top = 0.010802469
+anchor_right = 0.13194445
+anchor_bottom = 0.06481481
 size_flags_horizontal = 0
 text = "Velocity = #"
 label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Current_preview" type="Label" parent="." unique_id=1266529607]
-offset_top = 22.0
-offset_right = 431.0
-offset_bottom = 82.0
+anchors_preset = -1
+anchor_left = 0.00086805556
+anchor_top = 0.055555556
+anchor_right = 0.19097222
+anchor_bottom = 0.1095679
 size_flags_horizontal = 0
 text = "Current_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Mouse_loc" type="Label" parent="." unique_id=1079711593]
-offset_top = 46.0
-offset_right = 431.0
-offset_bottom = 106.0
+anchors_preset = -1
+anchor_top = 0.10339506
+anchor_right = 0.19618055
+anchor_bottom = 0.1574074
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Player_direction" type="Label" parent="." unique_id=1565483740]
-offset_top = 68.0
-offset_right = 431.0
-offset_bottom = 128.0
+anchors_preset = -1
+anchor_top = 0.1558642
+anchor_right = 0.19965278
+anchor_bottom = 0.20987654
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Player_rotation" type="Label" parent="." unique_id=1816384639]
-offset_top = 93.0
-offset_right = 431.0
-offset_bottom = 153.0
+anchors_preset = -1
+anchor_top = 0.2037037
+anchor_right = 0.2048611
+anchor_bottom = 0.25771606
 size_flags_horizontal = 0
 text = "Previous_Input = #"
 label_settings = SubResource("LabelSettings_tyffc")
+metadata/_edit_use_anchors_ = true
 
-[node name="RigidBody3D" parent="." unique_id=2104336907 instance=ExtResource("2_wl4x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49276, 1.6876602, 4.813659)
+[node name="Wall" type="StaticBody3D" parent="." unique_id=143633500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3008049, 0)
 
-[node name="Dummy" parent="." unique_id=1922773541 instance=ExtResource("2_olpmc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=832291247]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, -0.8664551, 0)
+shape = SubResource("BoxShape3D_olpmc")
 
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=1442981254]
-offset_left = 933.0
-offset_top = 12.0
-offset_right = 995.0
-offset_bottom = 74.0
-
-[node name="ColorRect7" type="ColorRect" parent="." unique_id=1231619401]
-offset_left = 860.0
-offset_top = 12.0
-offset_right = 922.0
-offset_bottom = 74.0
-
-[node name="ColorRect8" type="ColorRect" parent="." unique_id=1391913386]
-offset_left = 46.999977
-offset_top = 581.0
-offset_right = 81.71067
-offset_bottom = 615.7107
-rotation = 0.7853982
-
-[node name="ColorRect9" type="ColorRect" parent="." unique_id=48330440]
-offset_left = 101.99999
-offset_top = 581.0
-offset_right = 136.7107
-offset_bottom = 615.7107
-rotation = 0.7853982
-
-[node name="ColorRect10" type="ColorRect" parent="." unique_id=717276115]
-offset_left = 156.00003
-offset_top = 581.0
-offset_right = 190.71072
-offset_bottom = 615.7107
-rotation = 0.7853982
-
-[node name="ColorRect5" type="ColorRect" parent="." unique_id=733918545]
-offset_left = 1004.0
-offset_top = 12.0
-offset_right = 1066.0
-offset_bottom = 74.0
-
-[node name="ColorRect6" type="ColorRect" parent="." unique_id=1598102788]
-offset_left = 1079.0
-offset_top = 12.0
-offset_right = 1141.0
-offset_bottom = 74.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=553369499]
+transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
+mesh = SubResource("BoxMesh_olpmc")
