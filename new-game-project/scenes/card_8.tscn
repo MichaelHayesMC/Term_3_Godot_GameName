@@ -9,6 +9,7 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Card8" type="ColorRect" unique_id=1625671800]
 custom_minimum_size = Vector2(321, 427)
+color = Color(1, 0.4509804, 0.99215686, 1)
 
 [node name="Icon" type="ColorRect" parent="." unique_id=731351620]
 custom_minimum_size = Vector2(100, 100)

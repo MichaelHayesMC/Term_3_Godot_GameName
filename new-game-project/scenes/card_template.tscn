@@ -11,7 +11,6 @@ font_color = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(321, 427)
 offset_right = 321.0
 offset_bottom = 427.0
-color = Color(1, 0.4627451, 1, 1)
 
 [node name="Icon" type="ColorRect" parent="." unique_id=1039600849]
 custom_minimum_size = Vector2(100, 100)

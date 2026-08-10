@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://duj0falcbfd1q" path="res://scripts/game_manager.gd" id="1_xdvfk"]
 [ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://scenes/dummy.tscn" id="2_olpmc"]
 [ext_resource type="PackedScene" uid="uid://dm0a8tcy3qrnr" path="res://scenes/modifiers_hud.tscn" id="3_olpmc"]
-[ext_resource type="Script" uid="uid://bk3u4nuea5lx8" path="res://scripts/timer_hud.gd" id="4_7ft05"]
-[ext_resource type="Script" uid="uid://ixitl8ouh3c5" path="res://scripts/player_manager.gd" id="5_4ag8t"]
+[ext_resource type="Script" uid="uid://bk3u4nuea5lx8" path="res://scenes/timer_hud.gd" id="4_7ft05"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,6 +56,10 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.49127007
 fov = 25.0
 size = 27.293
 
+[node name="CharacterBody3D" parent="." unique_id=1438579107 node_paths=PackedStringArray("camera_3d") instance=ExtResource("1_e05a3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
+camera_3d = NodePath("../Camera_Anchor/Camera3D")
+
 [node name="Baseplate" type="StaticBody3D" parent="." unique_id=1150942541]
 collision_layer = 3
 collision_mask = 3
@@ -70,6 +73,10 @@ shape = SubResource("WorldBoundaryShape3D_tyffc")
 transform = Transform3D(21.213202, 0, -21.213202, 0, 0.059999995, 0, 21.213202, 0, 21.213202, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_4xowi")
+
+[node name="Dummy" parent="." unique_id=1922773541 node_paths=PackedStringArray("camera_3d") instance=ExtResource("2_olpmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
+camera_3d = NodePath("../Camera_Anchor/Camera3D")
 
 [node name="Wall" type="StaticBody3D" parent="." unique_id=143633500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3008049, 0)
@@ -90,8 +97,8 @@ anchor_bottom = 0.13271604
 grow_horizontal = 2
 script = ExtResource("4_7ft05")
 timer_lb = NodePath("Timer_Lb")
-in_game_minutes = 0
-in_game_seconds = 10
+minutes = 2
+seconds = 0
 main_game_scene = null
 modifiers_hud = ExtResource("3_olpmc")
 
@@ -217,13 +224,5 @@ text = "Text"
 label_settings = SubResource("LabelSettings_tyffc")
 metadata/_edit_use_anchors_ = true
 
-[node name="Dummy" parent="." unique_id=1922773541 node_paths=PackedStringArray("camera_3d") instance=ExtResource("2_olpmc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
-camera_3d = NodePath("../Camera_Anchor/Camera3D")
-
-[node name="Players" type="Node" parent="." unique_id=113695776]
-script = ExtResource("5_4ag8t")
-
-[node name="CharacterBody3D" parent="Players" unique_id=1438579107 node_paths=PackedStringArray("camera_3d") instance=ExtResource("1_e05a3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
-camera_3d = NodePath("../../Camera_Anchor/Camera3D")
+[node name="Modifiers_Hud" parent="." unique_id=800153155 instance=ExtResource("3_olpmc")]
+visible = false

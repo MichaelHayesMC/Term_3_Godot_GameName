@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dm0a8tcy3qrnr"]
 
 [ext_resource type="PackedScene" uid="uid://dhobt5prlv6lq" path="res://scenes/card_template.tscn" id="1_id5ov"]
+[ext_resource type="Script" uid="uid://6kn6mybmhnpv" path="res://scripts/margin_container.gd" id="1_of6fc"]
 [ext_resource type="PackedScene" uid="uid://b1o5ocu2c2k6s" path="res://scenes/card_2.tscn" id="2_hfdmc"]
 [ext_resource type="PackedScene" uid="uid://cmhvoiicjyyjo" path="res://scenes/card_3.tscn" id="3_11yj6"]
 [ext_resource type="PackedScene" uid="uid://dkrssolcp4wlk" path="res://scenes/card_4.tscn" id="4_of6fc"]
 [ext_resource type="PackedScene" uid="uid://cjb3bpon7f8j4" path="res://scenes/card_5.tscn" id="5_r70bm"]
-[ext_resource type="PackedScene" uid="uid://bfsunlxju5f1a" path="res://scenes/card_7.tscn" id="6_11yj6"]
-[ext_resource type="PackedScene" uid="uid://dbg6kl6wcgmma" path="res://scenes/card_8.tscn" id="7_of6fc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdmc"]
+bg_color = Color(1, 0.92053556, 0.9052289, 1)
 
 [node name="Modifiers_Hud" type="Control" unique_id=800153155]
 layout_mode = 3
@@ -24,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfdmc")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1973646255]
 layout_mode = 1
@@ -38,42 +41,12 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
+script = ExtResource("1_of6fc")
+card_roster = Array[PackedScene]([ExtResource("1_id5ov"), ExtResource("2_hfdmc"), ExtResource("3_11yj6"), ExtResource("4_of6fc"), ExtResource("5_r70bm")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=495920930]
 layout_mode = 2
 theme_override_constants/separation = 60
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1741616442]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Card1" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=442085845 instance=ExtResource("1_id5ov")]
-layout_mode = 2
-
-[node name="Card2" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1694183426 instance=ExtResource("2_hfdmc")]
-layout_mode = 2
-
-[node name="Card3" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2060605603 instance=ExtResource("3_11yj6")]
-layout_mode = 2
-
-[node name="Card4" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1213761196 instance=ExtResource("4_of6fc")]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=732739072]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Card5" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1671461823 instance=ExtResource("5_r70bm")]
-layout_mode = 2
-
-[node name="Card6" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=894798343 instance=ExtResource("4_of6fc")]
-layout_mode = 2
-
-[node name="Card7" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=710892639 instance=ExtResource("6_11yj6")]
-layout_mode = 2
-
-[node name="Card8" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1625671800 instance=ExtResource("7_of6fc")]
-layout_mode = 2
 
 [node name="Player_bar" type="ColorRect" parent="." unique_id=814115910]
 layout_mode = 1
