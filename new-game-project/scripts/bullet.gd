@@ -9,9 +9,10 @@ func _process(delta: float) -> void:
 	global_position += -global_transform.basis.y * gravity * delta
 
 func _on_bullet_collider_body_entered(body: Node3D) -> void:
-	if body.name != "Bullet":
+	if body != self:
 		queue_free()
 
 func _on_bullet_collider_area_entered(area: Area3D) -> void:
-	print(area)
-	queue_free()
+	if area.name != "Bullet_collider":
+		print(area)
+		queue_free()

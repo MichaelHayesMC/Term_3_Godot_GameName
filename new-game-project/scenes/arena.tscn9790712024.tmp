@@ -38,8 +38,9 @@ font_color = Color(0, 0, 0, 1)
 font_size = 35
 font_color = Color(0, 0.5568628, 0, 1)
 
-[node name="Game" type="Node3D" unique_id=1025241619 node_paths=PackedStringArray("timer_label")]
+[node name="Game" type="Node3D" unique_id=1025241619 node_paths=PackedStringArray("timer", "timer_label")]
 script = ExtResource("1_xdvfk")
+timer = NodePath("")
 timer_label = NodePath("Timer_HUD/Timer_Lb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1820911538]
@@ -98,7 +99,7 @@ anchor_bottom = 0.13271604
 grow_horizontal = 2
 script = ExtResource("4_7ft05")
 timer_lb = NodePath("Timer_Lb")
-minutes = 2
+minutes = 1
 seconds = 0
 
 [node name="Timer_Lb" type="Label" parent="Timer_HUD" unique_id=1546908415]
@@ -181,7 +182,6 @@ grow_vertical = 0
 rotation = 0.7853982
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1497523911]
-visible = false
 offset_left = 1.6666666
 offset_top = 2.666667
 offset_right = 272.0
