@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://dm0a8tcy3qrnr"]
+
+[ext_resource type="PackedScene" uid="uid://dhobt5prlv6lq" path="res://scenes/card_template.tscn" id="1_id5ov"]
+[ext_resource type="PackedScene" uid="uid://b1o5ocu2c2k6s" path="res://scenes/card_2.tscn" id="2_hfdmc"]
+[ext_resource type="PackedScene" uid="uid://cmhvoiicjyyjo" path="res://scenes/card_3.tscn" id="3_11yj6"]
+[ext_resource type="PackedScene" uid="uid://dkrssolcp4wlk" path="res://scenes/card_4.tscn" id="4_of6fc"]
+[ext_resource type="PackedScene" uid="uid://cjb3bpon7f8j4" path="res://scenes/card_5.tscn" id="5_r70bm"]
+[ext_resource type="PackedScene" uid="uid://bfsunlxju5f1a" path="res://scenes/card_7.tscn" id="6_11yj6"]
+[ext_resource type="PackedScene" uid="uid://dbg6kl6wcgmma" path="res://scenes/card_8.tscn" id="7_of6fc"]
+
+[node name="Modifiers_Hud" type="Control" unique_id=800153155]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=379688123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1973646255]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -482.0
+offset_right = 1634.0
+offset_bottom = 482.0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=495920930]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1741616442]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Card1" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=442085845 instance=ExtResource("1_id5ov")]
+layout_mode = 2
+
+[node name="Card2" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1694183426 instance=ExtResource("2_hfdmc")]
+layout_mode = 2
+
+[node name="Card3" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2060605603 instance=ExtResource("3_11yj6")]
+layout_mode = 2
+
+[node name="Card4" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1213761196 instance=ExtResource("4_of6fc")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=732739072]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Card5" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1671461823 instance=ExtResource("5_r70bm")]
+layout_mode = 2
+
+[node name="Card6" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=894798343 instance=ExtResource("4_of6fc")]
+layout_mode = 2
+
+[node name="Card7" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=710892639 instance=ExtResource("6_11yj6")]
+layout_mode = 2
+
+[node name="Card8" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1625671800 instance=ExtResource("7_of6fc")]
+layout_mode = 2
+
+[node name="Player_bar" type="ColorRect" parent="." unique_id=814115910]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Player_1_Pfp" type="ColorRect" parent="." unique_id=825662341]
+layout_mode = 0
+offset_left = 1675.0
+offset_top = 63.0
+offset_right = 1855.0
+offset_bottom = 243.0
+color = Color(0, 1, 1, 1)
+
+[node name="Player_2_Pfp" type="ColorRect" parent="." unique_id=1560210164]
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 334.0
+offset_right = 1852.0
+offset_bottom = 514.0
+color = Color(0, 1, 0, 1)
+
+[node name="Player_3_Pfp" type="ColorRect" parent="." unique_id=1384498807]
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 578.0
+offset_right = 1852.0
+offset_bottom = 758.0
+color = Color(0.9254902, 0.5294118, 0.25490198, 1)
+
+[node name="Player_4_Pfp" type="ColorRect" parent="." unique_id=683316921]
+layout_mode = 0
+offset_left = 1669.0
+offset_top = 832.0
+offset_right = 1849.0
+offset_bottom = 1012.0
+color = Color(0.87058824, 0, 0.23137255, 1)
