@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://tqykh5rxjluu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_so6iy"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_o1atq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5gu6x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q60fs"]
+size = Vector3(19.939697, 4.947754, 0.10058594)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqcc7"]
+
+[node name="Lobby" type="Node3D" unique_id=1090663771]
+
+[node name="Baseplate" type="StaticBody3D" parent="." unique_id=1158384557]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_so6iy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=191855841]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_o1atq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate" unique_id=1883724522]
+transform = Transform3D(21.213202, 0, -21.213202, 0, 0.059999995, 0, 21.213202, 0, 21.213202, 0, 0, 0)
+layers = 3
+mesh = SubResource("BoxMesh_5gu6x")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=493503861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5715485, 3.3008049, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=334258169]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, -0.8664551, 0)
+shape = SubResource("BoxShape3D_q60fs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=191391274]
+transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
+mesh = SubResource("BoxMesh_nqcc7")

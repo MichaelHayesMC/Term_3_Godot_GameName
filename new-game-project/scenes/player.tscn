@@ -15,6 +15,14 @@ albedo_color = Color(0.7372549, 0.18431373, 0.22745098, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvunv"]
 albedo_color = Color(0, 1, 0, 1)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1438579107]
 collision_layer = 2
 script = ExtResource("1_iwpo4")
@@ -37,3 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25435662)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.4427164)
 mesh = SubResource("PrismMesh_cvunv")
 surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
+replication_config = SubResource("SceneReplicationConfig_g2els")

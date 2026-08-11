@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
-@onready var velocity_preview: Label = $"../../VBoxContainer/Velocity_preview"
-@onready var current_preview: Label = $"../../VBoxContainer/Current_preview"
-@onready var mouse_loc: Label = $"../../VBoxContainer/Mouse_loc"
-@onready var player_direction: Label = $"../../VBoxContainer/Player_direction"
-@onready var player_rotation: Label = $"../../VBoxContainer/Player_rotation"
+#@onready var velocity_preview: Label = $"../../VBoxContainer/Velocity_preview"
+#@onready var current_preview: Label = $"../../VBoxContainer/Current_preview"
+#@onready var mouse_loc: Label = $"../../VBoxContainer/Mouse_loc"
+#@onready var player_direction: Label = $"../../VBoxContainer/Player_direction"
+#@onready var player_rotation: Label = $"../../VBoxContainer/Player_rotation"
 
-@export var camera_3d: Camera3D
+@onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
 
 @export var Bullet : PackedScene
 
@@ -16,25 +16,30 @@ const TopSpeed := 10.0
 const Jump_Strength := 15.0
 const Gravity := 50.0
 
-func _physics_process(delta: float) -> void:
-	mouse_loc.text = "Mouse Location: " + str(get_viewport().get_mouse_position()) 
-	player_direction.text = "Player Location: " + str(self.position)
-	
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
+func _physics_process(delta: float) -> void:	
+	if !is_multiplayer_authority() : return
+	#mouse_loc.text = "Mouse Location: " + str(get_viewport().get_mouse_position()) 
+	#player_direction.text = "Player Location: " + str(self.position)
+
+##	
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
-
+#
 	var origin = camera_3d.project_ray_origin(mousepos)
 	var end = origin + camera_3d.project_ray_normal(mousepos) * 1000
 	var query = PhysicsRayQueryParameters3D.create(origin, end, 2)
 	query.collide_with_areas = true
-
+#
 	var result = space_state.intersect_ray(query)
-	
+	#
 	result.position.y = position.y
-	
+	#
 	look_at(result.position)
 	
-	player_rotation.text = "Player_Rotation " + str(rotation_degrees)
+	#player_rotation.text = "Player_Rotation " + str(rotation_degrees)
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y += Jump_Strength
@@ -43,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("move_down") and is_on_floor():
 		velocity.z += Speed * delta
-		current_preview.text = "Current_Input: Down"
+		#current_preview.text = "Current_Input: Down"
 		if velocity.z > TopSpeed:
 			velocity.z = TopSpeed
 	elif velocity.z > 0 and is_on_floor():
@@ -52,7 +57,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = 0
 			
 	if Input.is_action_pressed("move_up") and is_on_floor():
-		current_preview.text = "Current_Input: Up"
+		#current_preview.text = "Current_Input: Up"
 		velocity.z -= Speed * delta
 		if velocity.z < -TopSpeed:
 			velocity.z = -TopSpeed
@@ -63,7 +68,7 @@ func _physics_process(delta: float) -> void:
 			
 	if Input.is_action_pressed("move_right") and is_on_floor():
 		velocity.x += Speed * delta
-		current_preview.text = "Current_Input: Right"
+		#current_preview.text = "Current_Input: Right"
 		if velocity.x > TopSpeed:
 			velocity.x = TopSpeed
 	elif velocity.x > 0 and is_on_floor():
@@ -72,7 +77,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 			
 	if Input.is_action_pressed("move_left") and is_on_floor():
-		current_preview.text = "Current_Input: Left"
+		#current_preview.text = "Current_Input: Left"
 		velocity.x -= Speed * delta
 		if velocity.x < -TopSpeed:
 			velocity.x = -TopSpeed
@@ -81,13 +86,17 @@ func _physics_process(delta: float) -> void:
 		if velocity.x > 0:
 			velocity.x = 0
 		
-	velocity_preview.text = "Velocity: x" + str(int(velocity.x)) + " y" + str(int(velocity.y)) + " z" + str(int(velocity.z))
+	#velocity_preview.text = "Velocity: x" + str(int(velocity.x)) + " y" + str(int(velocity.y)) + " z" + str(int(velocity.z))
 	
 	if GameManager.players_moving:
 		move_and_slide()
+		
+	if Input.is_action_just_pressed("left_click"):
+		shoot.rpc()
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left_click") and GameManager.players_moving:
+@rpc("call_local")
+
+func shoot():
 		var bullet = Bullet.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_transform = $Weapon/Marker3D.global_transform

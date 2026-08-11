@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://hhybejs82qhl"]
 
+[ext_resource type="Script" uid="uid://he6hr0efurx2" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="PackedScene" uid="uid://mgp02mkor0at" path="res://scenes/arena.tscn" id="2_sa3yf"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a2ex"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
@@ -12,6 +15,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fgkus")
+main_game = ExtResource("2_sa3yf")
 
 [node name="Panel" type="Panel" parent="." unique_id=1026246844]
 layout_mode = 1
@@ -63,3 +68,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Client"
+
+[connection signal="pressed" from="Panel/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Panel/Client" to="." method="_on_client_pressed"]
