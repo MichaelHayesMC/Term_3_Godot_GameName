@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://hhybejs82qhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a2ex"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
+font_size = 150
+
+[node name="Title_screen" type="Control" unique_id=1472138808]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1026246844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1a2ex")
+
+[node name="Title" type="Label" parent="Panel" unique_id=925576043]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40078124
+anchor_top = 0.15555556
+anchor_right = 0.5992187
+anchor_bottom = 0.3494213
+grow_horizontal = 2
+grow_vertical = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_fgkus")
+
+[node name="Host" type="Button" parent="Panel" unique_id=203539835]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46276042
+anchor_top = 0.45740741
+anchor_right = 0.5372396
+anchor_bottom = 0.5425926
+offset_left = 49.5
+offset_top = 30.5
+offset_right = -49.5
+offset_bottom = -30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Host"
+
+[node name="Client" type="Button" parent="Panel" unique_id=1313319599]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45416668
+anchor_top = 0.5777778
+anchor_right = 0.54583335
+anchor_bottom = 0.662963
+offset_left = 16.5
+offset_right = -16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Client"
