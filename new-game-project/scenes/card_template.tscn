@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dhobt5prlv6lq"]
 
+[ext_resource type="Script" uid="uid://dwb0syom25324" path="res://scripts/card_template.gd" id="1_y1fi3"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_cr3o2"]
 font_color = Color(0, 0, 0, 1)
 
@@ -11,6 +13,7 @@ font_color = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(321, 427)
 offset_right = 321.0
 offset_bottom = 427.0
+script = ExtResource("1_y1fi3")
 
 [node name="Icon" type="ColorRect" parent="." unique_id=1039600849]
 custom_minimum_size = Vector2(100, 100)
@@ -53,3 +56,7 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 label_settings = SubResource("LabelSettings_5p55f")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

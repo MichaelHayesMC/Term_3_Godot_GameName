@@ -90,9 +90,6 @@ anchor_bottom = 0.13271604
 grow_horizontal = 2
 script = ExtResource("4_7ft05")
 timer_lb = NodePath("Timer_Lb")
-in_game_minutes = 0
-in_game_seconds = 10
-main_game_scene = null
 modifiers_hud = ExtResource("3_olpmc")
 
 [node name="Timer_Lb" type="Label" parent="Timer_HUD" unique_id=1546908415]
@@ -225,5 +222,5 @@ camera_3d = NodePath("../Camera_Anchor/Camera3D")
 script = ExtResource("5_4ag8t")
 
 [node name="CharacterBody3D" parent="Players" unique_id=1438579107 node_paths=PackedStringArray("camera_3d") instance=ExtResource("1_e05a3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -16.654585)
 camera_3d = NodePath("../../Camera_Anchor/Camera3D")

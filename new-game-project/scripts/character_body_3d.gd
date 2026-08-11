@@ -83,10 +83,11 @@ func _physics_process(delta: float) -> void:
 		
 	velocity_preview.text = "Velocity: x" + str(int(velocity.x)) + " y" + str(int(velocity.y)) + " z" + str(int(velocity.z))
 	
-	move_and_slide()
+	if GameManager.players_moving:
+		move_and_slide()
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and GameManager.players_moving:
 		var bullet = Bullet.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_transform = $Weapon/Marker3D.global_transform
