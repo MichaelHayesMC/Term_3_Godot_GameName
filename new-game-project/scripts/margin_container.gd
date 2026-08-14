@@ -1,19 +1,35 @@
 extends MarginContainer
 
-@export var card_roster : Array[PackedScene]
+@export var card_roster: Array[PackedScene]
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_loader()
+	if multiplayer.is_server():
+		var card_ids: Array[int] = []
+
+		var rng := RandomNumberGenerator.new()
+		rng.randomize()
+
+		for i in range(8):
+			card_ids.append(rng.randi_range(0, card_roster.size() - 1))
+			print(card_ids)
+
+		card_loader.rpc(card_ids)
 
 
-func card_loader():
+@rpc("authority", "call_local", "reliable")
+func card_loader(card_ids: Array[int]) -> void:
+	var index := 0
+
 	for row in range(2):
-		var row_load = HBoxContainer.new()
+		var row_load := HBoxContainer.new()
 		$VBoxContainer.add_child(row_load)
 		row_load.add_theme_constant_override("separation", 70)
+
 		for column in range(4):
-			var current_card = card_roster.pick_random()
-			var loaded_card = current_card.instantiate()
+			var card_id: int = card_ids[index]
+			index += 1
+
+			var current_card := card_roster[card_id]
+			var loaded_card := current_card.instantiate()
 			row_load.add_child(loaded_card)

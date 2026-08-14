@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://b1o5ocu2c2k6s" path="res://scenes/card_2.tscn" id="2_hfdmc"]
 [ext_resource type="PackedScene" uid="uid://cmhvoiicjyyjo" path="res://scenes/card_3.tscn" id="3_11yj6"]
 [ext_resource type="PackedScene" uid="uid://dkrssolcp4wlk" path="res://scenes/card_4.tscn" id="4_of6fc"]
-[ext_resource type="PackedScene" uid="uid://cjb3bpon7f8j4" path="res://scenes/card_5.tscn" id="5_r70bm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdmc"]
 bg_color = Color(1, 0.92053556, 0.9052289, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hfdmc"]
 
 [node name="Modifiers_Hud" type="Control" unique_id=800153155]
 layout_mode = 3
@@ -42,7 +43,7 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 script = ExtResource("1_of6fc")
-card_roster = Array[PackedScene]([ExtResource("1_id5ov"), ExtResource("2_hfdmc"), ExtResource("3_11yj6"), ExtResource("4_of6fc"), ExtResource("5_r70bm")])
+card_roster = Array[PackedScene]([ExtResource("1_id5ov"), ExtResource("2_hfdmc"), ExtResource("3_11yj6"), ExtResource("4_of6fc")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=495920930]
 layout_mode = 2
@@ -67,7 +68,6 @@ offset_bottom = 243.0
 color = Color(0, 1, 1, 1)
 
 [node name="Player_2_Pfp" type="ColorRect" parent="." unique_id=1560210164]
-visible = false
 layout_mode = 0
 offset_left = 1672.0
 offset_top = 334.0
@@ -92,3 +92,6 @@ offset_top = 832.0
 offset_right = 1849.0
 offset_bottom = 1012.0
 color = Color(0.87058824, 0, 0.23137255, 1)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1319925781]
+replication_config = SubResource("SceneReplicationConfig_hfdmc")
