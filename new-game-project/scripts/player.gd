@@ -1,7 +1,12 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
+@onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
+
 @export var Bullet : PackedScene
+#@export var Player_color
+
 
 const Speed := 75.0
 const Friction := -40.0
@@ -9,11 +14,16 @@ const TopSpeed := 10.0
 const Jump_Strength := 15.0
 const Gravity := 50.0
 
+func _ready() -> void:
+	GameManager.players.append(name)
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority() : return
+	
+	colour_change.rpc()
 	
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
@@ -75,10 +85,19 @@ func _physics_process(delta: float) -> void:
 		shoot.rpc()
 
 @rpc("call_local")
-
 func shoot():
 		var bullet = Bullet.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_transform = $Weapon/Marker3D.global_transform
 		bullet.global_rotation = $".".global_rotation
-		
+
+@rpc("call_local")
+func colour_change():
+	if name == GameManager.players[0]:
+		mat.albedo_color = Color(0.0, 1.0, 1.0, 1.0)
+	elif name == GameManager.players[1]:
+		mat.albedo_color = Color(0.0, 1.0, 0.0, 1.0)
+	elif name == GameManager.players[2]:
+		mat.albedo_color = Color(1.0, 0.5, 0.0, 1.0)
+	elif name == GameManager.players[3]:
+		mat.albedo_color = Color(1.0, 0.0, 0.0, 1.0)
