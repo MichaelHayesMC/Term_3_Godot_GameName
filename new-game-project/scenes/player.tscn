@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddc8k6gybq8ur"]
 
-[ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://scripts/character_body_3d.gd" id="1_iwpo4"]
+[ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://scripts/player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iwpo4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7tup"]
+resource_local_to_scene = true
 albedo_color = Color(0.7372549, 0.18431373, 0.22745098, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_cvunv"]
@@ -23,7 +24,7 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1438579107]
+[node name="Player" type="CharacterBody3D" unique_id=1438579107]
 collision_layer = 2
 script = ExtResource("1_iwpo4")
 Bullet = ExtResource("2_g2els")

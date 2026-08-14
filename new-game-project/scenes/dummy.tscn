@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kre8v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5f3b"]
+resource_local_to_scene = true
 albedo_color = Color(0.25492018, 0.4102332, 0.7103265, 1)
 
 [node name="Dummy" type="CharacterBody3D" unique_id=1922773541]

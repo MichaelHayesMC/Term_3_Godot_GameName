@@ -11,14 +11,12 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://hhybejs82qhl"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://duj0falcbfd1q"
-HighLevelNetworkHandler="*uid://f6vqmb2cb0g8"
 
 [display]
 
