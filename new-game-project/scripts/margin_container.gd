@@ -17,7 +17,7 @@ func _ready() -> void:
 		card_loader.rpc(card_ids)
 
 
-@rpc("authority", "call_local", "reliable")
+@rpc("call_local", "reliable")
 func card_loader(card_ids: Array[int]) -> void:
 	var index := 0
 

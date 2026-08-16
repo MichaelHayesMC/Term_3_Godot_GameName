@@ -76,7 +76,6 @@ offset_bottom = 514.0
 color = Color(0, 1, 0, 1)
 
 [node name="Player_3_Pfp" type="ColorRect" parent="." unique_id=1384498807]
-visible = false
 layout_mode = 0
 offset_left = 1672.0
 offset_top = 578.0
@@ -85,7 +84,6 @@ offset_bottom = 758.0
 color = Color(0.9254902, 0.5294118, 0.25490198, 1)
 
 [node name="Player_4_Pfp" type="ColorRect" parent="." unique_id=683316921]
-visible = false
 layout_mode = 0
 offset_left = 1669.0
 offset_top = 832.0

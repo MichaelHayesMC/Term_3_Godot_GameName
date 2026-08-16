@@ -26,3 +26,11 @@ func add_player(peer_id):
 	var player = PlayerLoad.instantiate()
 	player.name = str(peer_id)
 	$Players.add_child(player)
+
+func _on_start_pressed() -> void:
+	if !multiplayer.is_server(): return
+	modifiers_level.rpc()
+
+@rpc("call_local", "reliable")	
+func modifiers_level():
+	get_tree().change_scene_to_file("res://scenes/modifiers_hud.tscn")
