@@ -7,6 +7,7 @@ const PORT = 9999
 const PlayerLoad = preload("res://scenes/player.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
+var players = []
 
 func _on_host_pressed() -> void:
 	title_screen.hide()
@@ -27,6 +28,7 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	$Players.add_child(player)
 
+# Calls function to change scene with all player clients changing with it
 func _on_start_pressed() -> void:
 	if !multiplayer.is_server(): return
 	modifiers_level.rpc()

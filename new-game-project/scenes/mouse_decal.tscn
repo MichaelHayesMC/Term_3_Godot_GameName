@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cluva5choy51f"]
+
+[ext_resource type="Texture2D" uid="uid://ctrrctcdfr111" path="res://assets/Untitled design.png" id="2_0xula"]
+[ext_resource type="Script" uid="uid://dvb3avidmljwa" path="res://scripts/mouse_decal.gd" id="2_bb15k"]
+
+[node name="Mouse Cursor" type="Sprite2D" unique_id=918558570]
+scale = Vector2(0.011274351, 0.011274351)
+texture = ExtResource("2_0xula")
+offset = Vector2(860, 960)
+script = ExtResource("2_bb15k")

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tqykh5rxjluu" path="res://scenes/lobby.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://scripts/world.gd" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://cluva5choy51f" path="res://scenes/mouse_decal.tscn" id="3_4wyf3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +26,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="World" type="Node" unique_id=1774199772]
 script = ExtResource("1_rwgxs")
+
+[node name="MouseDecal" parent="." unique_id=918558570 instance=ExtResource("3_4wyf3")]
+position = Vector2(805, 495)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1508325074]
 _spawnable_scenes = PackedStringArray("uid://ddc8k6gybq8ur")
