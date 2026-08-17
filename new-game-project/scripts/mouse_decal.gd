@@ -1,25 +1,34 @@
 extends TextureRect
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	Global.player_colour.connect(colour_change)
+	
+	if multiplayer.is_server():
+		var player_index = GameManager.players.find(name)
+		colour_change.rpc(player_index)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position = get_global_mouse_position()
+	if !is_multiplayer_authority() : return
 	
-	colour_change()
+	global_position = get_global_mouse_position()
 
-func colour_change():
-	print("occured")
-	if name == GameManager.players[0]:
-		modulate = Color(0.0, 1.0, 1.0, 1.0)
-	elif name == GameManager.players[1]:
-		modulate = Color(0.0, 1.0, 0.0, 1.0)
-	elif name == GameManager.players[2]:
-		modulate = Color(1.0, 0.5, 0.0, 1.0)
-	elif name == GameManager.players[3]:
-		modulate = Color(1.0, 0.0, 0.0, 1.0)
+@rpc("call_local", "any_peer")
+func colour_change(player_index: int):
+	print("My name: ", name)
+	print("Index received: ", player_index)
+
+	match player_index:
+		0:
+			self_modulate = Color.CYAN
+		1:
+			self_modulate = Color.GREEN
+		2:
+			self_modulate = Color.ORANGE
+		3:
+			self_modulate = Color.RED
