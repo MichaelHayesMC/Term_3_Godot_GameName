@@ -3,6 +3,8 @@ class_name World
 
 @onready var title_screen: CanvasLayer = $TitleScreen
 
+signal player_colour
+
 const PORT = 9999
 const PlayerLoad = preload("res://scenes/player.tscn")
 
@@ -17,11 +19,15 @@ func _on_host_pressed() -> void:
 	
 	add_player(multiplayer.get_unique_id())
 	$LobbyUI.show()
+	
+	player_colour.emit()
 
 func _on_client_pressed() -> void:
 	title_screen.hide()
 	enet_peer.create_client("localhost", PORT)
 	multiplayer.multiplayer_peer = enet_peer
+	
+	player_colour.emit()
 
 func add_player(peer_id):
 	var player = PlayerLoad.instantiate()

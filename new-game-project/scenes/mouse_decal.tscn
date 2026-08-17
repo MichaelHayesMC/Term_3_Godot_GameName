@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cluva5choy51f"]
 
-[ext_resource type="Texture2D" uid="uid://cxedvbtvrv308" path="res://assets/Untitled (40 x 40 px) (1).png" id="1_0xula"]
+[ext_resource type="Texture2D" uid="uid://dlw3hds838jh6" path="res://assets/pointer_d.png" id="1_0xula"]
 [ext_resource type="Script" uid="uid://dvb3avidmljwa" path="res://scripts/mouse_decal.gd" id="2_bb15k"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0xula"]
