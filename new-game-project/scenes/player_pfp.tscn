@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://0ydfatbbqu2b"]
+
+[node name="Player_Pfp" type="ColorRect" unique_id=959515229]
+custom_minimum_size = Vector2(180, 180)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
