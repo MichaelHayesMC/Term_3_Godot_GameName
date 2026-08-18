@@ -2,7 +2,6 @@ extends MarginContainer
 
 @export var card_roster: Array[PackedScene]
 
-
 func _ready() -> void:
 	if multiplayer.is_server():
 		var card_ids: Array[int] = []
@@ -15,7 +14,6 @@ func _ready() -> void:
 			print(card_ids)
 
 		card_loader.rpc(card_ids)
-
 
 @rpc("call_local", "reliable")
 func card_loader(card_ids: Array[int]) -> void:

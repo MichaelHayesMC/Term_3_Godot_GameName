@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dhobt5prlv6lq" path="res://scenes/card_template.tscn" id="1_id5ov"]
 [ext_resource type="Script" uid="uid://6kn6mybmhnpv" path="res://scripts/margin_container.gd" id="1_of6fc"]
-[ext_resource type="PackedScene" uid="uid://b1o5ocu2c2k6s" path="res://scenes/card_2.tscn" id="2_hfdmc"]
-[ext_resource type="PackedScene" uid="uid://cmhvoiicjyyjo" path="res://scenes/card_3.tscn" id="3_11yj6"]
-[ext_resource type="PackedScene" uid="uid://dkrssolcp4wlk" path="res://scenes/card_4.tscn" id="4_of6fc"]
+[ext_resource type="Script" uid="uid://dqor8sg8e55ca" path="res://scripts/modifiers_hud.gd" id="1_r70bm"]
+[ext_resource type="Script" uid="uid://cdvgd4eti7xxw" path="res://scripts/player_bar.gd" id="6_11yj6"]
+[ext_resource type="PackedScene" uid="uid://0ydfatbbqu2b" path="res://scenes/player_pfp.tscn" id="6_hfdmc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdmc"]
 bg_color = Color(1, 0.92053556, 0.9052289, 1)
@@ -18,9 +18,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r70bm")
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="." unique_id=379688123]
+[node name="Background" type="Panel" parent="." unique_id=379688123]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hfdmc")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1973646255]
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1973646255]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -43,53 +44,57 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 script = ExtResource("1_of6fc")
-card_roster = Array[PackedScene]([ExtResource("1_id5ov"), ExtResource("2_hfdmc"), ExtResource("3_11yj6"), ExtResource("4_of6fc")])
+card_roster = Array[PackedScene]([ExtResource("1_id5ov")])
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=495920930]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=495920930]
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="Player_bar" type="ColorRect" parent="." unique_id=814115910]
+[node name="PlayerBar" type="Panel" parent="Background" unique_id=648364763]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -315.0
+offset_left = -324.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("6_11yj6")
 
-[node name="Player_1_Pfp" type="ColorRect" parent="." unique_id=825662341]
-layout_mode = 0
-offset_left = 1675.0
-offset_top = 63.0
-offset_right = 1855.0
-offset_bottom = 243.0
+[node name="MarginContainer" type="MarginContainer" parent="Background/PlayerBar" unique_id=379146366]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/PlayerBar/MarginContainer" unique_id=1689564286]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="Player_Pfp" parent="Background/PlayerBar/MarginContainer/VBoxContainer" unique_id=959515229 instance=ExtResource("6_hfdmc")]
+layout_mode = 2
 color = Color(0, 1, 1, 1)
 
-[node name="Player_2_Pfp" type="ColorRect" parent="." unique_id=1560210164]
-layout_mode = 0
-offset_left = 1672.0
-offset_top = 334.0
-offset_right = 1852.0
-offset_bottom = 514.0
+[node name="Player_Pfp2" parent="Background/PlayerBar/MarginContainer/VBoxContainer" unique_id=1552849712 instance=ExtResource("6_hfdmc")]
+layout_mode = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Player_3_Pfp" type="ColorRect" parent="." unique_id=1384498807]
-layout_mode = 0
-offset_left = 1672.0
-offset_top = 578.0
-offset_right = 1852.0
-offset_bottom = 758.0
-color = Color(0.9254902, 0.5294118, 0.25490198, 1)
+[node name="Player_Pfp3" parent="Background/PlayerBar/MarginContainer/VBoxContainer" unique_id=591252076 instance=ExtResource("6_hfdmc")]
+layout_mode = 2
+color = Color(1, 0.49803922, 0, 1)
 
-[node name="Player_4_Pfp" type="ColorRect" parent="." unique_id=683316921]
-layout_mode = 0
-offset_left = 1669.0
-offset_top = 832.0
-offset_right = 1849.0
-offset_bottom = 1012.0
-color = Color(0.87058824, 0, 0.23137255, 1)
+[node name="Player_Pfp4" parent="Background/PlayerBar/MarginContainer/VBoxContainer" unique_id=619940673 instance=ExtResource("6_hfdmc")]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1319925781]
 replication_config = SubResource("SceneReplicationConfig_hfdmc")

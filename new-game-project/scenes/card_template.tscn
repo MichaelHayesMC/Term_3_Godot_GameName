@@ -15,7 +15,7 @@ offset_right = 321.0
 offset_bottom = 427.0
 script = ExtResource("1_y1fi3")
 
-[node name="Icon" type="ColorRect" parent="." unique_id=1039600849]
+[node name="Icon" type="ColorRect" parent="." unique_id=1783422832]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0.8371803, 0.0011890221, 0.9256767, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1174710523]
 layout_mode = 0
