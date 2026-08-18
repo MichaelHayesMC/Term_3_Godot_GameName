@@ -4,13 +4,21 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_e05a3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug7gw"]
+albedo_color = Color(1, 0.5411765, 1, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_ug7gw"]
+material = SubResource("StandardMaterial3D_ug7gw")
 size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_olpmc"]
 size = Vector3(19.939697, 4.947754, 0.10058594)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e05a3"]
+albedo_color = Color(1, 1, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_xdvfk"]
+material = SubResource("StandardMaterial3D_e05a3")
 
 [node name="Arena" type="Node3D" unique_id=544702922]
 
@@ -38,3 +46,26 @@ shape = SubResource("BoxShape3D_olpmc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=243364388]
 transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
 mesh = SubResource("BoxMesh_xdvfk")
+
+[node name="Wall2" type="StaticBody3D" parent="." unique_id=898125969]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4155793, 3.3008049, -2.6659775)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2" unique_id=1973695373]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, -0.8664551, 0)
+shape = SubResource("BoxShape3D_olpmc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2" unique_id=955440253]
+transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
+mesh = SubResource("BoxMesh_xdvfk")
+
+[node name="WSpawner" type="Marker3D" parent="." unique_id=1155907842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="ESpawner" type="Marker3D" parent="." unique_id=1859249715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="NSpawner" type="Marker3D" parent="." unique_id=26639219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="SSpawner" type="Marker3D" parent="." unique_id=2147249295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)

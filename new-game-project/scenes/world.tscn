@@ -32,7 +32,7 @@ spawn_path = NodePath("../Players")
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=911778433]
 _spawnable_scenes = PackedStringArray("uid://cluva5choy51f")
-spawn_path = NodePath("../PlayerCursors")
+spawn_path = NodePath("../CanvasLayer/PlayerCursors")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1019559228]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -117,7 +117,11 @@ text = "Start"
 
 [node name="Players" type="Node3D" parent="." unique_id=762691890]
 
-[node name="PlayerCursors" type="Control" parent="." unique_id=1107086867]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=38147938]
+layer = 3
+
+[node name="PlayerCursors" type="Control" parent="CanvasLayer" unique_id=1107086867]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

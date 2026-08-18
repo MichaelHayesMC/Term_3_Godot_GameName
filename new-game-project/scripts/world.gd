@@ -34,7 +34,6 @@ func add_player(peer_id):
 
 	add_player_rpc.rpc(peer_id)
 
-
 @rpc("authority", "call_local", "reliable")
 func add_player_rpc(peer_id):
 	var player = PlayerLoad.instantiate()
@@ -43,7 +42,7 @@ func add_player_rpc(peer_id):
 
 	var mouse = MouseLoad.instantiate()
 	mouse.name = str(peer_id)
-	$PlayerCursors.add_child(mouse)
+	$CanvasLayer/PlayerCursors.add_child(mouse)
 	
 func add_cursor(peer_id):
 	var mouse = MouseLoad.instantiate()
@@ -54,8 +53,13 @@ func add_cursor(peer_id):
 # Calls function to change scene with all player clients changing with it
 func _on_start_pressed() -> void:
 	if !multiplayer.is_server(): return
-	modifiers_level.rpc()
+	
+	if len(GameManager.players) >= 2: 
+		modifiers_level.rpc()
 
-@rpc("call_local", "reliable")	
+@rpc("call_local", "reliable")
 func modifiers_level():
-	get_tree().change_scene_to_file("res://scenes/modifiers_hud.tscn")
+	$LobbyUI.hide()
+	var modifiers_menu = preload("res://scenes/modifiers_hud.tscn").instantiate()
+	$".".add_child(modifiers_menu)
+	
