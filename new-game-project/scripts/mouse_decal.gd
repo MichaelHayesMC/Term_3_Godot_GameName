@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 
 @rpc("call_local", "any_peer")
 func colour_change(player_index: int):
-	print("My name: ", name)
-	print("Index received: ", player_index)
+	#print("My name: ", name)
+	#print("Index received: ", player_index)
 
 	match player_index:
 		0:

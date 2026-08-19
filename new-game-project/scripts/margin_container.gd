@@ -27,7 +27,7 @@ var CardData = [
 		"color": Color(1.0, 1.0, 1.0, 1.0),
 		"tier": "Common",
 		"emblem_texture": Color(0.0, 0.589, 0.752, 1.0), # Will change to a texture
-		"value" : 0.2
+		"value" : 0.05
 	},
 	{
 		"name": "MOVE SPEED +",
@@ -43,7 +43,7 @@ var CardData = [
 		"color": Color(0.813, 0.267, 0.771, 1.0),
 		"tier": "Epic",
 		"emblem_texture": Color(1.0, 1.0, 1.0, 1.0), # Will change to a texture
-		"value" : 0.2
+		"value" : null
 	},
 	{
 		"name": "ECHO SHIELD (WIP)",
@@ -51,7 +51,7 @@ var CardData = [
 		"color": Color(1.0, 0.78, 0.231, 1.0),
 		"tier": "Legendary",
 		"emblem_texture": Color(0.375, 0.001, 0.488, 1.0), # Will change to a texture
-		"value" : 0.2
+		"value" : null
 	}
 ]
 
@@ -93,8 +93,19 @@ func card_loader(card_ids: Array[int]) -> void:
 
 func _on_card_selected(card_id: int) -> void:
 	var card_data: Dictionary = CardData[card_id]
-
+	
 	current_player.apply_card(card_data)
-
+	
 	print("Selected: ", card_data["name"])
 	print("Attack speed modifier: ", current_player.attack_speed_modifier)
+	
+	print(current_player.name)
+	
+	done_state.rpc(current_player.name)
+
+@rpc("call_local", "reliable", "any_peer")
+func done_state(player):
+	if player == GameManager.players[0]:
+		$"../PlayerBar/Player_Done".show()
+	elif player == GameManager.players[1]:
+			$"../PlayerBar/Player_Done2".show()

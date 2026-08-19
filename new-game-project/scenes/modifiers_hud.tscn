@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dqor8sg8e55ca" path="res://scripts/modifiers_hud.gd" id="1_r70bm"]
 [ext_resource type="Script" uid="uid://cdvgd4eti7xxw" path="res://scripts/player_bar.gd" id="6_11yj6"]
 [ext_resource type="PackedScene" uid="uid://0ydfatbbqu2b" path="res://scenes/player_pfp.tscn" id="6_hfdmc"]
+[ext_resource type="Texture2D" uid="uid://f326unkf1dj3" path="res://assets/12906344.png" id="6_of6fc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdmc"]
 bg_color = Color(1, 0.92053556, 0.9052289, 1)
@@ -95,6 +96,46 @@ color = Color(1, 0.49803922, 0, 1)
 [node name="Player_Pfp4" parent="Background/PlayerBar/MarginContainer/VBoxContainer" unique_id=619940673 instance=ExtResource("6_hfdmc")]
 layout_mode = 2
 color = Color(1, 0, 0, 1)
+
+[node name="Player_Done" type="TextureRect" parent="Background/PlayerBar" unique_id=476092115]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 59.000004
+offset_right = 573.0
+offset_bottom = 571.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_of6fc")
+
+[node name="Player_Done2" type="TextureRect" parent="Background/PlayerBar" unique_id=919594283]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 316.99997
+offset_right = 573.0
+offset_bottom = 829.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_of6fc")
+
+[node name="Player_Done3" type="TextureRect" parent="Background/PlayerBar" unique_id=6943835]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 573.0
+offset_right = 573.0
+offset_bottom = 1085.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_of6fc")
+
+[node name="Player_Done4" type="TextureRect" parent="Background/PlayerBar" unique_id=427071095]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 830.0
+offset_right = 573.0
+offset_bottom = 1342.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_of6fc")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1319925781]
 replication_config = SubResource("SceneReplicationConfig_hfdmc")

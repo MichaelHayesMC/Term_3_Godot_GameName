@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		elif game_state == "post_game" and GameManager.players_moving:
 			counting = false
 			ready_next_phase = !ready_next_phase
-			modifiers_proceed()
+			modifiers_proceed.rpc()
 	elif seconds == 0 and counting:
 		minutes -= 1
 		seconds = 59
@@ -80,7 +80,9 @@ func _process(delta: float) -> void:
 		
 	timer_lb.text = (minutes_label + " : " + seconds_label)
 
+@rpc("any_peer", "call_local")
 func modifiers_proceed():
 	var modifiers_load = modifiers_hud.instantiate()
 	get_tree().current_scene.add_child(modifiers_load)
 	GameManager.players_moving = false
+	get_parent().queue_free()

@@ -2,6 +2,7 @@ extends Node
 class_name World
 
 @onready var title_screen: CanvasLayer = $TitleScreen
+@onready var HUD = preload("res://scenes/hud.tscn")
 
 signal player_colour
 
@@ -10,7 +11,6 @@ const PlayerLoad = preload("res://scenes/player.tscn")
 const MouseLoad = preload("res://scenes/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
-var players = []
 
 func _on_host_pressed() -> void:
 	title_screen.hide()
@@ -55,11 +55,11 @@ func _on_start_pressed() -> void:
 	if !multiplayer.is_server(): return
 	
 	if len(GameManager.players) >= 2: 
-		modifiers_level.rpc()
+		HUD_display.rpc()
 
 @rpc("call_local", "reliable")
-func modifiers_level():
+func HUD_display():
 	$LobbyUI.hide()
-	var modifiers_menu = preload("res://scenes/modifiers_hud.tscn").instantiate()
-	$".".add_child(modifiers_menu)
+	var new_HUD = HUD.instantiate()
+	$".".add_child(new_HUD)
 	

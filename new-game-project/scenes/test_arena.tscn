@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://mgp02mkor0at"]
 
-[ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/player.tscn" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://duj0falcbfd1q" path="res://scripts/game_manager.gd" id="1_xdvfk"]
-[ext_resource type="Script" uid="uid://chwu1m4c4v35i" path="res://scripts/high_level_multiplayer_spawner.gd" id="2_dpxgc"]
 [ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://scenes/dummy.tscn" id="2_olpmc"]
-[ext_resource type="PackedScene" uid="uid://dm0a8tcy3qrnr" path="res://scenes/modifiers_hud.tscn" id="3_olpmc"]
-[ext_resource type="Script" uid="uid://bk3u4nuea5lx8" path="res://scripts/timer_hud.gd" id="4_7ft05"]
 [ext_resource type="Script" uid="uid://ixitl8ouh3c5" path="res://scripts/player_manager.gd" id="5_4ag8t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
@@ -32,18 +28,12 @@ size = Vector3(19.939697, 4.947754, 0.10058594)
 
 [sub_resource type="BoxMesh" id="BoxMesh_olpmc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_olpmc"]
-font_size = 90
-font_color = Color(0, 0, 0, 1)
-
 [node name="Game" type="Node3D" unique_id=1025241619]
 script = ExtResource("1_xdvfk")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=581951]
 _spawnable_scenes = PackedStringArray("uid://ddc8k6gybq8ur")
 spawn_path = NodePath("../Players")
-script = ExtResource("2_dpxgc")
-network_player = ExtResource("1_e05a3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1820911538]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -85,99 +75,9 @@ shape = SubResource("BoxShape3D_olpmc")
 transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
 mesh = SubResource("BoxMesh_olpmc")
 
-[node name="Dummy" parent="." unique_id=1922773541 node_paths=PackedStringArray("camera_3d") instance=ExtResource("2_olpmc")]
+[node name="Dummy" parent="." unique_id=1922773541 instance=ExtResource("2_olpmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2585626, 1, 3.8999844)
-camera_3d = NodePath("../Camera_Anchor/Camera3D")
 
 [node name="Players" type="Node3D" parent="." unique_id=1731002737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.515766, 3.1427283)
 script = ExtResource("5_4ag8t")
-
-[node name="Timer_HUD" type="ColorRect" parent="." unique_id=377520041 node_paths=PackedStringArray("timer_lb")]
-anchors_preset = -1
-anchor_left = 0.4079861
-anchor_right = 0.5920139
-anchor_bottom = 0.13271604
-grow_horizontal = 2
-script = ExtResource("4_7ft05")
-timer_lb = NodePath("Timer_Lb")
-modifiers_hud = ExtResource("3_olpmc")
-
-[node name="Timer_Lb" type="Label" parent="Timer_HUD" unique_id=1546908415]
-layout_mode = 0
-offset_right = 352.6667
-offset_bottom = 144.0
-text = "00 : 00"
-label_settings = SubResource("LabelSettings_olpmc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=520585844]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -469.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 124.0
-grow_horizontal = 0
-theme_override_constants/separation = 15
-
-[node name="Player_1_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=334155577]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0, 1, 1, 1)
-
-[node name="Player_2_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=1744926765]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0, 1, 0, 1)
-
-[node name="Player_3_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=1869327985]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 0.43137255, 0, 1)
-
-[node name="Player_4_Pfp" type="ColorRect" parent="HBoxContainer" unique_id=758924291]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.98039216, 0, 0, 1)
-
-[node name="Modifier_1_HUD" type="ColorRect" parent="." unique_id=1391913386]
-anchors_preset = -1
-anchor_left = 0.022000002
-anchor_top = 0.901
-anchor_right = 0.048
-anchor_bottom = 0.947
-offset_left = 24.727978
-offset_top = -24.305176
-offset_right = 44.824905
-offset_bottom = -3.776245
-grow_vertical = 0
-rotation = 0.7853982
-
-[node name="Modifier_2_HUD" type="ColorRect" parent="." unique_id=1326412061]
-anchors_preset = -1
-anchor_left = 0.075
-anchor_top = 0.901
-anchor_right = 0.1
-anchor_bottom = 0.947
-offset_left = 24.119995
-offset_top = -24.440002
-offset_right = 46.136963
-offset_bottom = -3.9110718
-grow_vertical = 0
-rotation = 0.7853982
-
-[node name="Modifier_3_HUD" type="ColorRect" parent="." unique_id=1890536444]
-anchors_preset = -1
-anchor_left = 0.127
-anchor_top = 0.901
-anchor_right = 0.15300001
-anchor_bottom = 0.947
-offset_left = 25.128006
-offset_top = -24.439941
-offset_right = 45.224915
-offset_bottom = -3.9110107
-grow_vertical = 0
-rotation = 0.7853982

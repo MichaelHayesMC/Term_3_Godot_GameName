@@ -41,7 +41,9 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1943106861]
 environment = SubResource("Environment_k0juu")
 
-[node name="Lobby" parent="." unique_id=1090663771 instance=ExtResource("1_nnsk1")]
+[node name="Platform" type="Node3D" parent="." unique_id=202950321]
+
+[node name="Lobby" parent="Platform" unique_id=1090663771 instance=ExtResource("1_nnsk1")]
 
 [node name="CameraAnchor" type="Node3D" parent="." unique_id=488327854]
 transform = Transform3D(1, 0, 0, 0, 0.43021178, 0.90272796, 0, -0.90272796, 0.43021178, 0, 70.26976, 34.833115)
@@ -50,6 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 0.43021178, 0.90272796, 0, -0.90272796, 0.43
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.49127007, -0.62976074)
 fov = 25.0
 size = 27.293
+
+[node name="Players" type="Node3D" parent="." unique_id=762691890]
 
 [node name="TitleScreen" type="CanvasLayer" parent="." unique_id=759749094]
 
@@ -114,8 +118,6 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Start"
-
-[node name="Players" type="Node3D" parent="." unique_id=762691890]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=38147938]
 layer = 3
