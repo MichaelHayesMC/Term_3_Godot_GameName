@@ -3,16 +3,32 @@ class_name Player
 
 @onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
 @onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
-
 @export var Bullet : PackedScene
-#@export var Player_color
 
+var score : int
+var attack : int
+@export var modifiers : Array = []
 
+# Kinematic Variables
 const Speed := 75.0
 const Friction := -40.0
 const TopSpeed := 10.0
 const Jump_Strength := 15.0
 const Gravity := 50.0
+
+var ghost_walk := false
+var echo_shield := false
+
+var attack_speed_modifier := 0.0
+var move_speed_modifier := 0.0
+
+func apply_card(card_data: Dictionary) -> void:
+	match card_data["name"]:
+		"ATK SPEED":
+			attack_speed_modifier += card_data["value"]
+		"MOVE SPEED":
+			move_speed_modifier += card_data["value"]
+
 
 func _ready() -> void:
 	GameManager.players.append(name)

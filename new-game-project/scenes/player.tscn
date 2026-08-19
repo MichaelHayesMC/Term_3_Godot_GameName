@@ -25,10 +25,11 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1438579107]
+[node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_iwpo4")
 Bullet = ExtResource("2_g2els")
+modifiers = [null, null, null]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
 shape = SubResource("CapsuleShape3D_bu0v1")

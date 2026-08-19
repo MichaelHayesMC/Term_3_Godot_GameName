@@ -30,6 +30,7 @@ window/vsync/vsync_mode=0
 [global_group]
 
 global_camera=""
+players=""
 
 [gui]
 

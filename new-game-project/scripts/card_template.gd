@@ -1,30 +1,9 @@
 extends ColorRect
 
+signal card_selected(card_id: int)
+
 var default_color = color
 var enabled = true
-
-var CardData = [
-	{
-		"name" : "ATK_SPEED",
-		"description" : "Increase Attack Speed by 5%",
-		"color" : Color(1.0, 1.0, 1.0, 1.0),
-		"tier" : "Common",
-		"emblem_texture" : Color() # Change color to texture when pngs have been uploaded
-	},
-	{
-		"name" : "ATK_SPEED",
-		"description" : "Increase Attack Speed by 20%",
-		"color" : Color(0.223, 0.597, 0.626, 1.0),
-		"tier" : "Uncommon",
-		"emblem_texture" : Texture2D
-	}
-]
-
-var Card_name
-var Card_desc 
-var Card_color 
-var Card_tier 
-var Card_emblem
 
 var card_id: int
 var card_name: String
@@ -40,9 +19,6 @@ func setup_card(id: int, data: Dictionary) -> void:
 	card_color = data["color"]
 	card_tier = data["tier"]
 	card_emblem = data["emblem_texture"]
-
-	print("I am card: ", card_name)
-	print("My effect: ", card_description)
 	
 	$Label.text = card_name
 	$Label2.text = card_description
@@ -58,7 +34,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			print("disabled")
 
 func modifier_apply():
-	pass
+	card_selected.emit(card_id)
 
 @rpc("call_local", "any_peer")
 func vanity():
