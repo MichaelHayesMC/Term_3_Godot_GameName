@@ -105,7 +105,14 @@ func _on_card_selected(card_id: int) -> void:
 
 @rpc("call_local", "reliable", "any_peer")
 func done_state(player):
+	GameManager.players_ready += 1
+	
 	if player == GameManager.players[0]:
 		$"../PlayerBar/Player_Done".show()
 	elif player == GameManager.players[1]:
 			$"../PlayerBar/Player_Done2".show()
+	elif player == GameManager.players[2]:
+			$"../PlayerBar/Player_Done2".show()
+	elif player == GameManager.players[3]:
+			$"../PlayerBar/Player_Done2".show()
+		

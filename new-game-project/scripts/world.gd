@@ -59,7 +59,8 @@ func _on_start_pressed() -> void:
 
 @rpc("call_local", "reliable")
 func HUD_display():
-	$LobbyUI.hide()
+	if $LobbyUI:
+		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	$".".add_child(new_HUD)
 	
