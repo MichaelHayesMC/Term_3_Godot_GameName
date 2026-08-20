@@ -27,7 +27,7 @@ func setup_card(id: int, data: Dictionary) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
-		if enabled:
+		if enabled and !GameManager.player_chosen:
 			vanity.rpc()
 			modifier_apply()
 		elif !enabled:

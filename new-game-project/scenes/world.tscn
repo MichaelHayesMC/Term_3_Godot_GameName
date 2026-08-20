@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://tqykh5rxjluu" path="res://scenes/lobby.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://scripts/world.gd" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://c1y0se7c08qwa" path="res://scenes/arena.tscn" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://bj34rktmx0wv0" path="res://scenes/arena2.tscn" id="3_71j4m"]
+[ext_resource type="PackedScene" uid="uid://cfv4rxkda6xi7" path="res://scenes/arena3.tscn" id="4_71j4m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +28,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="World" type="Node" unique_id=1774199772]
 script = ExtResource("1_rwgxs")
+levels = Array[PackedScene]([ExtResource("2_k0juu"), ExtResource("3_71j4m"), ExtResource("4_71j4m")])
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1508325074]
 _spawnable_scenes = PackedStringArray("uid://ddc8k6gybq8ur")
@@ -93,6 +97,11 @@ text = "Host"
 [node name="Client" type="Button" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1722046565]
 layout_mode = 2
 text = "Client"
+
+[node name="TextEdit" type="TextEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1939560296]
+custom_minimum_size = Vector2(10, 40)
+layout_mode = 2
+placeholder_text = "Port"
 
 [node name="LobbyUI" type="CanvasLayer" parent="." unique_id=1542916873]
 visible = false

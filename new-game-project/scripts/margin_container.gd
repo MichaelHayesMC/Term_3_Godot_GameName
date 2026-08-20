@@ -96,12 +96,9 @@ func _on_card_selected(card_id: int) -> void:
 	
 	current_player.apply_card(card_data)
 	
-	print("Selected: ", card_data["name"])
-	print("Attack speed modifier: ", current_player.attack_speed_modifier)
-	
-	print(current_player.name)
-	
 	done_state.rpc(current_player.name)
+	
+	GameManager.player_chosen = true
 
 @rpc("call_local", "reliable", "any_peer")
 func done_state(player):

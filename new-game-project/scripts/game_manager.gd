@@ -7,3 +7,5 @@ var players_moving = true
 var players : Array
 
 var players_ready = 0
+
+var player_chosen = false
