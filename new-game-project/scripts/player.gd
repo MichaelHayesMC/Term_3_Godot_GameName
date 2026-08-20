@@ -1,13 +1,20 @@
 extends CharacterBody3D
 class_name Player
 
+signal score_changed(new_score: int)
+
+var score: int = 0:
+	set(value):
+		score = value
+		score_changed.emit(score)
+
 @onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
 @onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
 @export var Bullet : PackedScene
 
 var shooting = true
 
-var score : int
+var health := 1
 
 # Kinematic Variables
 const Speed := 75.0
@@ -35,6 +42,7 @@ func apply_card(card_data: Dictionary) -> void:
 
 func _ready() -> void:
 	GameManager.players.append(name)
+	add_to_group("players")
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
@@ -103,15 +111,36 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		shoot.rpc()
 
-@rpc("call_local")
+@rpc("any_peer")
+func receive_damage():
+	health -= 1
+	if health <= 0:
+		print(name, " Died")
+
+@rpc("authority", "call_local", "reliable")
+func add_point():
+	score += 1
+	print("Player ", name, " got a point! Score: ", score)
+
+@rpc("call_local", "any_peer")
 func shoot():
 	if shooting:
 		shooting = false
+		
 		var bullet = Bullet.instantiate()
+		
+		# Remember who fired this bullet
+		bullet.shooter_id = get_multiplayer_authority()
+		
 		get_tree().current_scene.add_child(bullet)
+		
 		bullet.global_transform = $Weapon/Marker3D.global_transform
-		bullet.global_rotation = $".".global_rotation
-		await get_tree().create_timer(1.9 - (0.9 * attack_speed_modifier)).timeout
+		bullet.global_rotation = global_rotation
+		
+		await get_tree().create_timer(
+			1.9 - (0.9 * attack_speed_modifier)
+		).timeout
+		
 		shooting = true
 
 @rpc("call_local")
