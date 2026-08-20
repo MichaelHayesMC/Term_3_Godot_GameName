@@ -14,6 +14,8 @@ const PlayerLoad = preload("res://scenes/player.tscn")
 const MouseLoad = preload("res://scenes/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
+var ip_test = "10.47.1.88"
+
 
 func _ready():
 	print("===== WORLD CREATED =====")
@@ -33,11 +35,11 @@ func _on_host_pressed() -> void:
 	add_player(multiplayer.get_unique_id())
 	$LobbyUI.show()
 	
-	upnp_setup()
+#	upnp_setup()
 
 func _on_client_pressed() -> void:
 	title_screen.hide()
-	enet_peer.create_client("localhost", PORT)
+	enet_peer.create_client(ip_test, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
 	#player_colour.emit()
@@ -117,18 +119,18 @@ func HUD_display():
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
 	
-func upnp_setup():
-	var upnp = UPNP.new()
-	
-	var discover_result = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result) 
-	
-	assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-		
-	var map_result = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-		
-	print("Success! Join Address: %s" % upnp.query_external_address())
+#func upnp_setup():
+	#var upnp = UPNP.new()
+	#
+	#var discover_result = upnp.discover()
+	#assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
+		#"UPNP Discover Failed! Error %s" % discover_result) 
+	#
+	#assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
+		#"UPNP Invalid Gateway!")
+		#
+	#var map_result = upnp.add_port_mapping(PORT)
+	#assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
+		#"UPNP Port Mapping Failed! Error %s" % map_result)
+		#
+	#print("Success! Join Address: %s" % upnp.query_external_address())
