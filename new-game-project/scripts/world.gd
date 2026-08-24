@@ -14,17 +14,7 @@ const PlayerLoad = preload("res://scenes/player.tscn")
 const MouseLoad = preload("res://scenes/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
-var ip_test = "10.47.1.88"
-
-
-func _ready():
-	print("===== WORLD CREATED =====")
-	print("PEER: ", multiplayer.get_unique_id())
-	print("INSTANCE: ", get_instance_id())
-	print("PATH: ", get_path())
-	print("PARENT: ", get_parent())
-	print("SCENE: ", scene_file_path)
-	print("LEVELS: ", levels)
+var ip_test = "localhost"
 
 func _on_host_pressed() -> void:
 	title_screen.hide()
@@ -35,7 +25,7 @@ func _on_host_pressed() -> void:
 	add_player(multiplayer.get_unique_id())
 	$LobbyUI.show()
 	
-#	upnp_setup()
+	#upnp_setup() # Blueprint to create a online multiplayer hosting and client system unrestricted to the confines of local multiplayer
 
 func _on_client_pressed() -> void:
 	title_screen.hide()
@@ -59,7 +49,7 @@ func add_player_rpc(peer_id):
 	var mouse = MouseLoad.instantiate()
 	mouse.name = str(peer_id)
 	$CanvasLayer/PlayerCursors.add_child(mouse)
-	
+
 func add_cursor(peer_id):
 	var mouse = MouseLoad.instantiate()
 	mouse.name = str(peer_id)
@@ -73,7 +63,7 @@ func _on_start_pressed() -> void:
 	if len(GameManager.players) >= 2: 
 		HUD_display.rpc()
 		level_pick()
-		
+
 func level_pick():
 	if not multiplayer.is_server():
 		return
@@ -99,7 +89,6 @@ func Level_change(chosen_level):
 	print("SERVER CHOSE: ", chosen_level.resource_path)
 	level_sync.rpc(chosen_level.resource_path)
 
-
 @rpc("authority", "call_local", "reliable")
 func level_sync(level_path):
 	print("LOADING LEVEL ON PEER: ", multiplayer.get_unique_id())
@@ -118,19 +107,19 @@ func HUD_display():
 		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
+
+func upnp_setup():
+	var upnp = UPNP.new()
 	
-#func upnp_setup():
-	#var upnp = UPNP.new()
-	#
-	#var discover_result = upnp.discover()
-	#assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		#"UPNP Discover Failed! Error %s" % discover_result) 
-	#
-	#assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
-		#"UPNP Invalid Gateway!")
-		#
-	#var map_result = upnp.add_port_mapping(PORT)
-	#assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		#"UPNP Port Mapping Failed! Error %s" % map_result)
-		#
-	#print("Success! Join Address: %s" % upnp.query_external_address())
+	var discover_result = upnp.discover()
+	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
+		"UPNP Discover Failed! Error %s" % discover_result) 
+	
+	assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
+		"UPNP Invalid Gateway!")
+		
+	var map_result = upnp.add_port_mapping(PORT)
+	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
+		"UPNP Port Mapping Failed! Error %s" % map_result)
+		
+	print("Success! Join Address: %s" % upnp.query_external_address())

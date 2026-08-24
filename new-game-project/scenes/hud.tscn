@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dm0a8tcy3qrnr" path="res://scenes/modifiers_hud.tscn" id="2_uo2fv"]
 [ext_resource type="Script" uid="uid://i1nklnuj25uj" path="res://scripts/h_box_container.gd" id="3_047uy"]
 [ext_resource type="PackedScene" uid="uid://0ydfatbbqu2b" path="res://scenes/player_pfp.tscn" id="4_5pdws"]
-[ext_resource type="Script" uid="uid://dthe1ihliim5j" path="res://scripts/scoreboard.gd" id="5_uo2fv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qfnet"]
 font_size = 90
@@ -25,6 +24,8 @@ grow_horizontal = 2
 color = Color(1, 1, 1, 0.49803922)
 script = ExtResource("1_6fi6k")
 timer_lb = NodePath("Timer_Lb")
+default_in_game_minutes = 0
+default_in_game_seconds = 4
 modifiers_hud = ExtResource("2_uo2fv")
 
 [node name="Timer_Lb" type="Label" parent="Timer_HUD" unique_id=1072311897]
@@ -115,7 +116,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_uo2fv")
 
 [node name="Panel" type="Panel" parent="Scoreboard" unique_id=1301196090]
 layout_mode = 0
