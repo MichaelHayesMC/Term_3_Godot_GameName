@@ -27,6 +27,7 @@ properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_iwpo4")
 Bullet = ExtResource("2_g2els")
 

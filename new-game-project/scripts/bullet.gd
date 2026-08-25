@@ -12,14 +12,18 @@ func _process(delta: float) -> void:
 
 
 func _on_bullet_collider_body_entered(body: Node3D) -> void:
-	print("BULLET HIT: ", body.name)
+	#print("BULLET HIT: ", body.name)
 	
 	if body is Player:
 		
 		var victim_id = body.get_multiplayer_authority()
 		
-		print("VICTIM ID: ", victim_id)
-		print("SHOOTER ID: ", shooter_id)
+		#print("VICTIM ID: ", victim_id)
+		#print("SHOOTER ID: ", shooter_id)
+		
+		if victim_id != shooter_id:
+			print(body)
+			body.position.y = 10
 		
 		# Don't shoot yourself
 		if victim_id == shooter_id:
