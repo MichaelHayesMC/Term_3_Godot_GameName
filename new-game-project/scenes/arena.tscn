@@ -19,6 +19,7 @@ albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xdvfk"]
 material = SubResource("StandardMaterial3D_e05a3")
+size = Vector3(1, 1, 10)
 
 [node name="Arena" type="Node3D" unique_id=544702922]
 

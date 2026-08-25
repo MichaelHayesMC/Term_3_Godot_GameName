@@ -76,6 +76,7 @@ collision_mask = 8
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D6" unique_id=1326763657]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.4625292, 0)
+layers = 2
 use_collision = true
 radius = 10.0
 height = 4.868658

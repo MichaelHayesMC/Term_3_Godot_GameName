@@ -10,13 +10,11 @@ var score: int = 0:
 
 @onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
 @onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
-@export var Bullet : PackedScene
+@export var Bullet: PackedScene
 
-var shooting = true
-
+var shooting := true
 var health := 1
 
-# Kinematic Variables
 const Speed := 75.0
 const Friction := -40.0
 const TopSpeed := 10.0
@@ -29,6 +27,7 @@ var echo_shield := false
 var attack_speed_modifier := 1.0
 var move_speed_modifier := 1.0
 
+
 func apply_card(card_data: Dictionary) -> void:
 	match card_data["name"]:
 		"ATK SPEED":
@@ -40,35 +39,41 @@ func apply_card(card_data: Dictionary) -> void:
 		"MOVE SPEED +":
 			move_speed_modifier += card_data["value"]
 
+
 func _ready() -> void:
 	GameManager.players.append(name)
 	add_to_group("players")
+	colour_change()
+
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
 
+
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority() : return
-	
-	colour_change.rpc()
-	
+	if !is_multiplayer_authority():
+		return
+
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
-	
+
 	var origin = camera_3d.project_ray_origin(mousepos)
 	var end = origin + camera_3d.project_ray_normal(mousepos) * 1000
+
 	var query = PhysicsRayQueryParameters3D.create(origin, end, 2)
 	query.collide_with_areas = true
-	
+
 	var result = space_state.intersect_ray(query)
-	result.position.y = position.y
-	look_at(result.position)
-	
+
+	if !result.is_empty():
+		result.position.y = position.y
+		look_at(result.position)
+
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y += Jump_Strength
 	else:
 		velocity.y -= Gravity * delta
-	
+
 	if Input.is_action_pressed("move_down") and is_on_floor():
 		velocity.z += Speed * delta * move_speed_modifier
 		if velocity.z > TopSpeed * move_speed_modifier:
@@ -77,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z += Friction * delta
 		if velocity.z < 0:
 			velocity.z = 0
-			
+
 	if Input.is_action_pressed("move_up") and is_on_floor():
 		velocity.z -= Speed * delta * move_speed_modifier
 		if velocity.z < -TopSpeed * move_speed_modifier:
@@ -86,7 +91,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z -= Friction * delta
 		if velocity.z > 0:
 			velocity.z = 0
-			
+
 	if Input.is_action_pressed("move_right") and is_on_floor():
 		velocity.x += Speed * delta * move_speed_modifier
 		if velocity.x > TopSpeed * move_speed_modifier:
@@ -95,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x += Friction * delta
 		if velocity.x < 0:
 			velocity.x = 0
-			
+
 	if Input.is_action_pressed("move_left") and is_on_floor():
 		velocity.x -= Speed * delta * move_speed_modifier
 		if velocity.x < -TopSpeed * move_speed_modifier:
@@ -107,49 +112,80 @@ func _physics_process(delta: float) -> void:
 
 	if GameManager.players_moving:
 		move_and_slide()
-		
+
 	if Input.is_action_just_pressed("left_click"):
 		shoot.rpc()
 
-@rpc("any_peer")
+
+# --------------------------------------------------
+# DAMAGE
+# --------------------------------------------------
+
+# ONLY the server is allowed to process damage.
+@rpc("authority", "call_local", "reliable")
 func receive_damage():
 	health -= 1
+
 	if health <= 0:
 		print(name, " Died")
 
-@rpc("authority", "call_local", "reliable")
+
+# --------------------------------------------------
+# SCORE
+# --------------------------------------------------
+
+# ONLY the server is allowed to award points.
+@rpc("any_peer", "call_local", "reliable")
 func add_point():
+	if !multiplayer.is_server():
+		return
+
 	score += 1
+	update_score.rpc(score)
+
 	print("Player ", name, " got a point! Score: ", score)
 
-@rpc("call_local", "any_peer")
+
+@rpc("authority", "call_remote", "reliable")
+func update_score(new_score: int):
+	score = new_score
+
+# --------------------------------------------------
+# SHOOTING
+# --------------------------------------------------
+
+@rpc("any_peer", "call_local", "reliable")
 func shoot():
 	if shooting:
 		shooting = false
-		
+
 		var bullet = Bullet.instantiate()
-		
-		# Remember who fired this bullet
+
+		# Remember who fired this bullet.
 		bullet.shooter_id = get_multiplayer_authority()
-		
+
 		get_tree().current_scene.add_child(bullet)
-		
+
 		bullet.global_transform = $Weapon/Marker3D.global_transform
 		bullet.global_rotation = global_rotation
-		
+
 		await get_tree().create_timer(
 			1.9 - (0.9 * attack_speed_modifier)
 		).timeout
-		
+
 		shooting = true
 
-@rpc("call_local")
+
+# --------------------------------------------------
+# COLOUR
+# --------------------------------------------------
+
 func colour_change():
 	if name == GameManager.players[0]:
-		mat.albedo_color = Color(0.0, 1.0, 1.0, 1.0)
+		mat.albedo_color = Color(0.0, 1.0, 1.0)
 	elif name == GameManager.players[1]:
-		mat.albedo_color = Color(0.0, 1.0, 0.0, 1.0)
+		mat.albedo_color = Color(0.0, 1.0, 0.0)
 	elif name == GameManager.players[2]:
-		mat.albedo_color = Color(1.0, 0.5, 0.0, 1.0)
+		mat.albedo_color = Color(1.0, 0.5, 0.0)
 	elif name == GameManager.players[3]:
-		mat.albedo_color = Color(1.0, 0.0, 0.0, 1.0)
+		mat.albedo_color = Color(1.0, 0.0, 0.0)
