@@ -60,33 +60,33 @@ var players_loaded := {}
 func _ready() -> void:
 	var peer_id := multiplayer.get_unique_id()
 
-	print("\n============================")
-	print("CARD READY")
-	print("PEER: ", peer_id)
-	print("CARD PATH: ", get_path())
+	#print("\n============================")
+	#print("CARD READY")
+	#print("PEER: ", peer_id)
+	#print("CARD PATH: ", get_path())
 
 	var players_node = get_node_or_null("../../../Players")
 
-	print("PLAYERS NODE: ", players_node)
+	#print("PLAYERS NODE: ", players_node)
 
-	if players_node:
-		print("PLAYER CHILDREN:")
-		for child in players_node.get_children():
-			print(
-				"  NAME: ",
-				child.name,
-				" | PATH: ",
-				child.get_path(),
-				" | AUTHORITY: ",
-				child.get_multiplayer_authority()
-			)
+	#if players_node:
+		#print("PLAYER CHILDREN:")
+		#for child in players_node.get_children():
+			#print(
+				#"  NAME: ",
+				#child.name,
+				#" | PATH: ",
+				#child.get_path(),
+				#" | AUTHORITY: ",
+				#child.get_multiplayer_authority()
+			#)
 
 	current_player = get_node_or_null(
 		"../../../Players/" + str(peer_id)
 	)
 
-	print("CURRENT PLAYER: ", current_player)
-	print("============================\n")
+	#print("CURRENT PLAYER: ", current_player)
+	#print("============================\n")
 
 	if !multiplayer.is_server():
 		player_card_ui_ready.rpc_id(1, peer_id)
