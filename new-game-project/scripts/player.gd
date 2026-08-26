@@ -69,10 +69,7 @@ func _physics_process(delta: float) -> void:
 		result.position.y = position.y
 		look_at(result.position)
 
-	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y += Jump_Strength
-	else:
-		velocity.y -= Gravity * delta
+	velocity.y -= Gravity * delta
 
 	if Input.is_action_pressed("move_down") and is_on_floor():
 		velocity.z += Speed * delta * move_speed_modifier
