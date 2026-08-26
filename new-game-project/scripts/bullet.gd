@@ -29,9 +29,8 @@ func _on_bullet_collider_body_entered(body: Node3D) -> void:
 		body.receive_damage.rpc()
 		body.kill_update.rpc()
 		
-		if !multiplayer.is_server():
+		if multiplayer.is_server():
 
-			# Find the shooter.
 			var shooter: Player = null
 
 			for player in get_tree().get_nodes_in_group("players"):
@@ -39,13 +38,12 @@ func _on_bullet_collider_body_entered(body: Node3D) -> void:
 					shooter = player
 					break
 
-			# Give shooter exactly one point.
 			if shooter:
 				print("GIVING POINT TO: ", shooter.name)
 				shooter.add_point.rpc()
 
-			# Tell ALL clients to destroy their bullet.
 			destroy_bullet.rpc()
+
 
 	else:
 		print("BULLET HIT: ", body)
