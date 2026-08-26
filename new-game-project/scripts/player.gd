@@ -60,8 +60,8 @@ func _physics_process(delta: float) -> void:
 	var origin = camera_3d.project_ray_origin(mousepos)
 	var end = origin + camera_3d.project_ray_normal(mousepos) * 1000
 
-	var query = PhysicsRayQueryParameters3D.create(origin, end, 2)
-	query.collide_with_areas = true
+	var query = PhysicsRayQueryParameters3D.create(origin, end, 1)
+	query.collide_with_bodies = true
 
 	var result = space_state.intersect_ray(query)
 
@@ -129,6 +129,10 @@ func receive_damage():
 	if health <= 0:
 		print(name, " Died")
 
+# Temporary Stasis when killed
+@rpc("call_local")
+func kill_update():
+	position.z += 100
 
 # --------------------------------------------------
 # SCORE
@@ -189,3 +193,7 @@ func colour_change():
 		mat.albedo_color = Color(1.0, 0.5, 0.0)
 	elif name == GameManager.players[3]:
 		mat.albedo_color = Color(1.0, 0.0, 0.0)
+		
+@rpc("any_peer", "reliable")
+func spawn_location(pos: Vector3) -> void:
+	global_position = pos

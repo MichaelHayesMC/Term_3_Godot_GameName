@@ -1,31 +1,13 @@
 [gd_scene format=3 uid="uid://bj34rktmx0wv0"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4wyf3"]
+[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://scripts/arena.gd" id="1_ibfen"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k0juu"]
+[sub_resource type="BoxMesh" id="BoxMesh_ibfen"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71j4m"]
-albedo_color = Color(0.6586385, 0.7471263, 0.910084, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qfnet"]
-material = SubResource("StandardMaterial3D_71j4m")
-size = Vector2(1, 1)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vmxlm"]
 
 [node name="Arena" type="Node3D" unique_id=544702922]
-
-[node name="Baseplate" type="StaticBody3D" parent="." unique_id=483204887]
-collision_layer = 3
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_4wyf3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=1612204643]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_k0juu")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate" unique_id=1625228394]
-transform = Transform3D(21.213202, 0, -21.213202, 0, 0.059999995, 0, 21.213202, 0, 21.213202, 0, 0, 0)
-layers = 3
-mesh = SubResource("PlaneMesh_qfnet")
+script = ExtResource("1_ibfen")
 
 [node name="WSpawner" type="Marker3D" parent="." unique_id=1155907842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
@@ -123,3 +105,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.505463, -1.9073486e-06, 8
 inner_radius = 1.0
 outer_radius = 2.0
 sides = 19
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=876095691]
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 0, -0.6, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1283555436]
+transform = Transform3D(30, 0, 0, 0, -1, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_ibfen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=607701067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49999997, 0)
+shape = SubResource("WorldBoundaryShape3D_vmxlm")

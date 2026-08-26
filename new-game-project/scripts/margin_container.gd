@@ -3,6 +3,7 @@ extends MarginContainer
 @export var Card_template: PackedScene
 
 var current_player: Player
+var players_loaded := {}
 
 var CardData = [
 	{
@@ -55,38 +56,12 @@ var CardData = [
 	}
 ]
 
-var players_loaded := {}
-
 func _ready() -> void:
 	var peer_id := multiplayer.get_unique_id()
-
-	#print("\n============================")
-	#print("CARD READY")
-	#print("PEER: ", peer_id)
-	#print("CARD PATH: ", get_path())
-
-	var players_node = get_node_or_null("../../../Players")
-
-	#print("PLAYERS NODE: ", players_node)
-
-	#if players_node:
-		#print("PLAYER CHILDREN:")
-		#for child in players_node.get_children():
-			#print(
-				#"  NAME: ",
-				#child.name,
-				#" | PATH: ",
-				#child.get_path(),
-				#" | AUTHORITY: ",
-				#child.get_multiplayer_authority()
-			#)
 
 	current_player = get_node_or_null(
 		"../../../Players/" + str(peer_id)
 	)
-
-	#print("CURRENT PLAYER: ", current_player)
-	#print("============================\n")
 
 	if !multiplayer.is_server():
 		player_card_ui_ready.rpc_id(1, peer_id)
@@ -94,42 +69,36 @@ func _ready() -> void:
 		players_loaded[1] = true
 		check_all_players_ready()
 
-
-
 @rpc("any_peer", "reliable")
 func player_card_ui_ready(peer_id: int) -> void:
 	if !multiplayer.is_server():
 		return
-
+		
 	players_loaded[peer_id] = true
-
-	print("CARD UI READY FROM: ", peer_id)
-
+	
 	check_all_players_ready()
-
 
 func check_all_players_ready() -> void:
 	if !multiplayer.is_server():
 		return
-
+		
 	if players_loaded.size() < GameManager.players.size():
 		return
-
+		
 	generate_cards()
 
 func generate_cards() -> void:
 	var card_ids: Array[int] = []
-
+	
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
-
+	
 	for i in range(8):
 		card_ids.append(
 			rng.randi_range(0, CardData.size() - 1)
 		)
-
-	print("GENERATED CARDS: ", card_ids)
-
+		
+		
 	card_loader.rpc(card_ids)
 
 @rpc("authority", "call_local", "reliable")

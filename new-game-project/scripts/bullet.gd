@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_bullet_collider_body_entered(body: Node3D) -> void:
 	# ONLY the server processes collisions.
-	if !multiplayer.is_server():
-		return
+	#if !multiplayer.is_server():
+		#return
 
 	if body is Player:
 		var victim_id := body.get_multiplayer_authority()
@@ -27,30 +27,32 @@ func _on_bullet_collider_body_entered(body: Node3D) -> void:
 
 		# Damage the victim.
 		body.receive_damage.rpc()
+		body.kill_update.rpc()
+		
+		if !multiplayer.is_server():
 
-		# Find the shooter.
-		var shooter: Player = null
+			# Find the shooter.
+			var shooter: Player = null
 
-		for player in get_tree().get_nodes_in_group("players"):
-			if player.get_multiplayer_authority() == shooter_id:
-				shooter = player
-				break
+			for player in get_tree().get_nodes_in_group("players"):
+				if player.get_multiplayer_authority() == shooter_id:
+					shooter = player
+					break
 
-		# Give shooter exactly one point.
-		if shooter:
-			print("GIVING POINT TO: ", shooter.name)
-			shooter.add_point.rpc()
+			# Give shooter exactly one point.
+			if shooter:
+				print("GIVING POINT TO: ", shooter.name)
+				shooter.add_point.rpc()
 
-		# Tell ALL clients to destroy their bullet.
-		destroy_bullet.rpc()
+			# Tell ALL clients to destroy their bullet.
+			destroy_bullet.rpc()
 
 	else:
 		print("BULLET HIT: ", body)
 
 		# Wall/object collision.
 		destroy_bullet.rpc()
-
-
+	
 func _on_bullet_collider_area_entered(area: Area3D) -> void:
 	if !multiplayer.is_server():
 		return

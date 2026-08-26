@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if len(GameManager.players) >= 4:
 		$Player_Pfp.show()
 		$Player_Pfp2.show()

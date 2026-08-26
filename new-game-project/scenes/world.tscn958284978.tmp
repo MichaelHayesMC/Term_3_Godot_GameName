@@ -30,19 +30,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 script = ExtResource("1_rwgxs")
 levels = Array[PackedScene]([ExtResource("2_k0juu"), ExtResource("3_71j4m"), ExtResource("4_71j4m")])
 
-[node name="Node3D2" type="Node3D" parent="." unique_id=982959039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9170928, 0)
-
-[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="Node3D2" unique_id=911778433]
-_spawnable_scenes = PackedStringArray("uid://cluva5choy51f")
-spawn_path = NodePath("../../CanvasLayer/PlayerCursors")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=1519457857]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4670992, 0)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D" unique_id=1508325074]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1508325074]
 _spawnable_scenes = PackedStringArray("uid://ddc8k6gybq8ur")
-spawn_path = NodePath("../../Players")
+spawn_path = NodePath("../Players")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=911778433]
+_spawnable_scenes = PackedStringArray("uid://cluva5choy51f")
+spawn_path = NodePath("../CanvasLayer/PlayerCursors")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1019559228]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -52,7 +46,6 @@ shadow_enabled = true
 environment = SubResource("Environment_k0juu")
 
 [node name="Platform" type="Node3D" parent="." unique_id=202950321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0983071, 0)
 
 [node name="Lobby" parent="Platform" unique_id=1090663771 instance=ExtResource("1_nnsk1")]
 
