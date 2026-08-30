@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://scripts/player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://dxpe3nlvd0yhp" path="res://player_model2.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://s3dwdbnfkg11" path="res://player_model.tscn" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
 
@@ -26,7 +28,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_iwpo4")
 Bullet = ExtResource("2_g2els")
@@ -35,6 +37,7 @@ Bullet = ExtResource("2_g2els")
 shape = SubResource("CapsuleShape3D_bu0v1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2029733507]
+visible = false
 mesh = SubResource("CapsuleMesh_iwpo4")
 surface_material_override/0 = SubResource("StandardMaterial3D_o7tup")
 
@@ -46,8 +49,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25435662)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Weapon" unique_id=1287860943]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.0678647)
+visible = false
 mesh = SubResource("PrismMesh_cvunv")
 surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
 replication_config = SubResource("SceneReplicationConfig_g2els")
+
+[node name="Player_Model" parent="." unique_id=1805174020 instance=ExtResource("3_dqkch")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
+
+[node name="Player_Model3" parent="." unique_id=1374139661 instance=ExtResource("3_qhqgy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)

@@ -47,3 +47,7 @@ transform = Transform3D(-0.7071068, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7
 polygon = PackedVector2Array(-3, -1, -3, -1, 2, 1, 2, -1)
 depth = 10.0
 material = SubResource("StandardMaterial3D_o1atq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=293771970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2506895, 4.3999996, 0.35)
+size = Vector3(5, 10, 1)
