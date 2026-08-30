@@ -24,3 +24,13 @@ script = ExtResource("2_bb15k")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2075981437]
 replication_config = SubResource("SceneReplicationConfig_0xula")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1882901052]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 33.0
+offset_bottom = 33.0
+texture = ExtResource("1_0xula")
