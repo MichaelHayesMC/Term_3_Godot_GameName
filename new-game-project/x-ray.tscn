@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cdlfn813pmn21"]
+
+[ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://assets/Player_Model_Test.glb" id="1_qlfc7"]
+[ext_resource type="Material" uid="uid://bwjcygor3t7si" path="res://1new_standard_material_3d.tres" id="2_scvlm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifbwu"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+grow_amount = 0.205
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpib5"]
+next_pass = SubResource("StandardMaterial3D_ifbwu")
+albedo_color = Color(0.8352941, 1, 0.11764706, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0, 1, 1, 1)
+stencil_outline_thickness = 0.205
+
+[node name="X-ray" unique_id=664966421 instance=ExtResource("1_qlfc7")]
+
+[node name="Circle" parent="." index="0" unique_id=2075196788]
+material_override = ExtResource("2_scvlm")
+
+[node name="Circle_001" parent="." index="1" unique_id=206893122]
+material_override = ExtResource("2_scvlm")
+
+[node name="Cube" parent="." index="2" unique_id=765796345]
+material_override = ExtResource("2_scvlm")
+
+[node name="Cube_001" parent="Cube" index="0" unique_id=1187629892]
+material_override = ExtResource("2_scvlm")
+
+[node name="Cube_006" parent="Cube" index="1" unique_id=654070781]
+material_override = ExtResource("2_scvlm")
+
+[node name="Cube_002" parent="." index="3" unique_id=51745868]
+material_override = ExtResource("2_scvlm")
+
+[node name="Cube_003" parent="." index="4" unique_id=1591166218]
+material_override = ExtResource("2_scvlm")
+
+[node name="Plane_001" parent="Lattice_001" parent_id_path=PackedInt32Array(999439612) index="0" unique_id=1477563131]
+material_override = SubResource("StandardMaterial3D_mpib5")
+
+[node name="Plane_002" parent="Lattice_001" parent_id_path=PackedInt32Array(999439612) index="1" unique_id=1737518087]
+material_override = ExtResource("2_scvlm")
+
+[node name="Plane_003" parent="Lattice_002" parent_id_path=PackedInt32Array(622768211) index="0" unique_id=1988118683]
+material_override = SubResource("StandardMaterial3D_mpib5")
+
+[node name="Plane_004" parent="Lattice_002" parent_id_path=PackedInt32Array(622768211) index="1" unique_id=664179559]
+material_override = ExtResource("2_scvlm")
+
+[node name="Plane" parent="." index="9" unique_id=211064378]
+material_override = ExtResource("2_scvlm")

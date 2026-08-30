@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://scripts/player.gd" id="1_iwpo4"]
 [ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_g2els"]
-[ext_resource type="PackedScene" uid="uid://dxpe3nlvd0yhp" path="res://player_model2.tscn" id="3_dqkch"]
-[ext_resource type="PackedScene" uid="uid://s3dwdbnfkg11" path="res://player_model.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bnw0u32q27ygg" path="res://outline.tscn" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cdlfn813pmn21" path="res://x-ray.tscn" id="4_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
 
@@ -56,8 +56,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
 replication_config = SubResource("SceneReplicationConfig_g2els")
 
-[node name="Player_Model" parent="." unique_id=1805174020 instance=ExtResource("3_dqkch")]
+[node name="Outline" parent="." unique_id=664966421 instance=ExtResource("3_qlg0r")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
 
-[node name="Player_Model3" parent="." unique_id=1374139661 instance=ExtResource("3_qhqgy")]
+[node name="X-Ray" parent="." unique_id=644973831 instance=ExtResource("4_tuyoq")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
