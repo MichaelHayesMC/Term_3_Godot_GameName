@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://scenes/bullet.tscn" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bnw0u32q27ygg" path="res://outline.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cdlfn813pmn21" path="res://x-ray.tscn" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://assets/Player_Model.glb" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
 
@@ -36,6 +37,15 @@ Bullet = ExtResource("2_g2els")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
 shape = SubResource("CapsuleShape3D_bu0v1")
 
+[node name="Skin" parent="." unique_id=1289105819 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
+
+[node name="Outline" parent="." unique_id=2019037664 instance=ExtResource("3_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.70000005, 0)
+
+[node name="X-ray" parent="." unique_id=1395521162 instance=ExtResource("4_tuyoq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2029733507]
 visible = false
 mesh = SubResource("CapsuleMesh_iwpo4")
@@ -55,9 +65,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
 replication_config = SubResource("SceneReplicationConfig_g2els")
-
-[node name="Outline" parent="." unique_id=664966421 instance=ExtResource("3_qlg0r")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
-
-[node name="X-Ray" parent="." unique_id=644973831 instance=ExtResource("4_tuyoq")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
