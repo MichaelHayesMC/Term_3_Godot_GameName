@@ -38,7 +38,7 @@ func _process(delta):
 	if !moving:
 		$Anchor.rotation.z = 0.15 * sin(time * 5.0)
 	else:
-		$Anchor.rotation.z = 0.15 * sin(time * 30.0) * move_speed_modifier
+		$Anchor.rotation.z = 0.15 * sin(time * 20.0) * move_speed_modifier
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -232,17 +232,27 @@ signal color_changing(color)
 func colour_change():
 	if name == GameManager.players[0]:
 		mat.albedo_color = Color(0.0, 1.0, 1.0)
-		color_changing.emit(Color(0.0, 1.0, 1.0))
+		set_color(Color(0.0, 1.0, 1.0))
 	elif name == GameManager.players[1]:
 		mat.albedo_color = Color(0.0, 1.0, 0.0)
-		color_changing.emit(Color(0.0, 1.0, 0.0))
+		set_color(Color(0.0, 1.0, 0.0))
 	elif name == GameManager.players[2]:
 		mat.albedo_color = Color(1.0, 0.5, 0.0)
 		color_changing.emit(Color(1.0, 0.5, 0.0))
 	elif name == GameManager.players[3]:
 		mat.albedo_color = Color(1.0, 0.0, 0.0)
 		color_changing.emit(Color(1.0, 0.0, 0.0))
-		
+
+func set_color(new_color: Color) -> void:
+	if multiplayer.is_server():
+		_set_color.rpc(new_color)
+
+@rpc("authority", "call_local", "reliable")
+func _set_color(new_color: Color) -> void:
+	color_changing.emit(new_color)
+
+
+
 @rpc("any_peer", "reliable")
 func spawn_location(pos: Vector3) -> void:
 	global_position = pos
