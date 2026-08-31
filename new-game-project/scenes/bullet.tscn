@@ -4,7 +4,13 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_h1aey"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkf8s"]
+albedo_color = Color(0.11415807, 0.11415809, 0.11415807, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_mkf8s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y25gk"]
+albedo_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkf8s"]
 
@@ -16,10 +22,12 @@ script = ExtResource("1_mkf8s")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=901717452]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_h1aey")
+surface_material_override/0 = SubResource("StandardMaterial3D_mkf8s")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=438551741]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.32369912)
 mesh = SubResource("BoxMesh_mkf8s")
+surface_material_override/0 = SubResource("StandardMaterial3D_y25gk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=523985666]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
