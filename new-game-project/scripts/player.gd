@@ -3,14 +3,14 @@ class_name Player
 
 signal score_changed(new_score: int)
 
+@onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
+@onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
+@export var Bullet: PackedScene
+
 var score: int = 0:
 	set(value):
 		score = value
 		score_changed.emit(score)
-
-@onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
-@onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
-@export var Bullet: PackedScene
 
 var shooting := true
 var health := 1
@@ -27,6 +27,25 @@ var echo_shield := false
 var attack_speed_modifier := 1.0
 var move_speed_modifier := 1.0
 
+var time : float
+var moving
+
+func _process(delta):
+	time += delta
+	
+	$Anchor.scale.y = 0.15 * sin(time * 10.0) + 1
+
+	if !moving:
+		$Anchor.rotation.z = 0.15 * sin(time * 5.0)
+	else:
+		$Anchor.rotation.z = 0.15 * sin(time * 30.0) * move_speed_modifier
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+@rpc("any_peer", "call_local", "reliable")
+func set_moving(value: bool) -> void:
+	moving = value
+		
 
 func apply_card(card_data: Dictionary) -> void:
 	match card_data["name"]:
@@ -72,6 +91,9 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= Gravity * delta
 
 	if Input.is_action_pressed("move_down") and is_on_floor():
+		if moving != true:
+			moving = true
+			set_moving.rpc(true)
 		velocity.z += Speed * delta * move_speed_modifier
 		if velocity.z > TopSpeed * move_speed_modifier:
 			velocity.z = TopSpeed * move_speed_modifier
@@ -79,8 +101,15 @@ func _physics_process(delta: float) -> void:
 		velocity.z += Friction * delta
 		if velocity.z < 0:
 			velocity.z = 0
+		if moving != false:
+			moving = false
+			set_moving.rpc(false)
+
 
 	if Input.is_action_pressed("move_up") and is_on_floor():
+		if moving != true:
+			moving = true
+			set_moving.rpc(true)
 		velocity.z -= Speed * delta * move_speed_modifier
 		if velocity.z < -TopSpeed * move_speed_modifier:
 			velocity.z = -TopSpeed * move_speed_modifier
@@ -88,8 +117,15 @@ func _physics_process(delta: float) -> void:
 		velocity.z -= Friction * delta
 		if velocity.z > 0:
 			velocity.z = 0
+		if moving != false:
+			moving = false
+			set_moving.rpc(false)
+
 
 	if Input.is_action_pressed("move_right") and is_on_floor():
+		if moving != true:
+			moving = true
+			set_moving.rpc(true)
 		velocity.x += Speed * delta * move_speed_modifier
 		if velocity.x > TopSpeed * move_speed_modifier:
 			velocity.x = TopSpeed * move_speed_modifier
@@ -97,8 +133,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x += Friction * delta
 		if velocity.x < 0:
 			velocity.x = 0
+		if moving != false:
+			moving = false
+			set_moving.rpc(false)
+
 
 	if Input.is_action_pressed("move_left") and is_on_floor():
+		if moving != true:
+			moving = true
+			set_moving.rpc(true)
 		velocity.x -= Speed * delta * move_speed_modifier
 		if velocity.x < -TopSpeed * move_speed_modifier:
 			velocity.x = -TopSpeed * move_speed_modifier
@@ -106,6 +149,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x -= Friction * delta
 		if velocity.x > 0:
 			velocity.x = 0
+		if moving != false:
+			moving = false
+			set_moving.rpc(false)
 
 	if GameManager.players_moving:
 		move_and_slide()
@@ -181,15 +227,21 @@ func shoot():
 # COLOUR
 # --------------------------------------------------
 
+signal color_changing(color)
+
 func colour_change():
 	if name == GameManager.players[0]:
 		mat.albedo_color = Color(0.0, 1.0, 1.0)
+		color_changing.emit(Color(0.0, 1.0, 1.0))
 	elif name == GameManager.players[1]:
 		mat.albedo_color = Color(0.0, 1.0, 0.0)
+		color_changing.emit(Color(0.0, 1.0, 0.0))
 	elif name == GameManager.players[2]:
 		mat.albedo_color = Color(1.0, 0.5, 0.0)
+		color_changing.emit(Color(1.0, 0.5, 0.0))
 	elif name == GameManager.players[3]:
 		mat.albedo_color = Color(1.0, 0.0, 0.0)
+		color_changing.emit(Color(1.0, 0.0, 0.0))
 		
 @rpc("any_peer", "reliable")
 func spawn_location(pos: Vector3) -> void:

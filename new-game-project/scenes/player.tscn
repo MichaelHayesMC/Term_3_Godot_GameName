@@ -27,6 +27,12 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Anchor:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Anchor:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 4
@@ -37,14 +43,17 @@ Bullet = ExtResource("2_g2els")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
 shape = SubResource("CapsuleShape3D_bu0v1")
 
-[node name="Skin" parent="." unique_id=1289105819 instance=ExtResource("5_qlg0r")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
+[node name="Anchor" type="Node3D" parent="." unique_id=165453321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Outline" parent="." unique_id=2019037664 instance=ExtResource("3_qlg0r")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.70000005, 0)
+[node name="Skin" parent="Anchor" unique_id=1289105819 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
 
-[node name="X-ray" parent="." unique_id=1395521162 instance=ExtResource("4_tuyoq")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.7, 0)
+[node name="Outline" parent="Anchor" unique_id=2019037664 instance=ExtResource("3_qlg0r")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
+
+[node name="X-ray" parent="Anchor" unique_id=1395521162 instance=ExtResource("4_tuyoq")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2029733507]
 visible = false

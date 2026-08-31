@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cdlfn813pmn21"]
 
 [ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://assets/Player_Model.glb" id="1_kr6nt"]
+[ext_resource type="Script" uid="uid://cj605fhlbejq6" path="res://outline.gd" id="2_qlfc7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlfc7"]
 render_priority = 1
 transparency = 1
 no_depth_test = true
 shading_mode = 0
-albedo_color = Color(0, 1, 1, 1)
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 5
@@ -19,9 +19,10 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 2
 stencil_flags = 2
-stencil_color = Color(0, 1, 1, 1)
+stencil_color = Color(1, 1, 1, 1)
 
 [node name="X-ray" unique_id=1289105819 instance=ExtResource("1_kr6nt")]
+script = ExtResource("2_qlfc7")
 
 [node name="Circle" parent="." index="0" unique_id=149058900]
 material_override = SubResource("StandardMaterial3D_scvlm")
