@@ -19,6 +19,18 @@ size = Vector3(1, 1, 10)
 [node name="Arena" type="Node3D" unique_id=544702922]
 script = ExtResource("1_e05a3")
 
+[node name="WSpawner" type="Marker3D" parent="." unique_id=1155907842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="ESpawner" type="Marker3D" parent="." unique_id=1859249715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="NSpawner" type="Marker3D" parent="." unique_id=26639219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="SSpawner" type="Marker3D" parent="." unique_id=2147249295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
 [node name="Wall" type="StaticBody3D" parent="." unique_id=2064534158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5715485, 3.3008049, 0)
 
@@ -40,18 +52,6 @@ shape = SubResource("BoxShape3D_olpmc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2" unique_id=955440253]
 transform = Transform3D(14.107967, 0, -0.110436626, 0, 4.9, 0, 14.107967, 0, 0.110436626, 0, -0.8562918, 0)
 mesh = SubResource("BoxMesh_xdvfk")
-
-[node name="WSpawner" type="Marker3D" parent="." unique_id=1155907842]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
-
-[node name="ESpawner" type="Marker3D" parent="." unique_id=1859249715]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
-
-[node name="NSpawner" type="Marker3D" parent="." unique_id=26639219]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
-
-[node name="SSpawner" type="Marker3D" parent="." unique_id=2147249295]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=501276953]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 0, -0.6, 0)
