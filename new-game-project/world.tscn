@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://coar0w52ewb50"]
+
+[ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://autoloads/world.gd" id="1_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://c1y0se7c08qwa" path="res://entities/environment/levels/arenas/arena.tscn" id="2_ioo17"]
+[ext_resource type="PackedScene" uid="uid://bj34rktmx0wv0" path="res://entities/environment/levels/arenas/arena2.tscn" id="3_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cfv4rxkda6xi7" path="res://entities/environment/levels/arenas/arena3.tscn" id="4_ic0uy"]
+[ext_resource type="Texture2D" uid="uid://di121otsvx1yl" path="res://entities/environment/levels/arenas/5184157.jpg" id="5_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://dvm600yohx2b0" path="res://entities/environment/levels/arenas/map_1.tscn" id="6_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://cxy2x6qkwggo2" path="res://entities/environment/levels/arenas/map_2.tscn" id="7_70uel"]
+[ext_resource type="PackedScene" uid="uid://q8pfboy8jj45" path="res://entities/environment/levels/arenas/map_3.tscn" id="8_hiqwa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4wyf3"]
+sky_material = SubResource("ProceduralSkyMaterial_rwgxs")
+
+[sub_resource type="Environment" id="Environment_k0juu"]
+background_mode = 1
+background_color = Color(0.71315897, 0.88763976, 0.9312657, 1)
+sky = SubResource("Sky_4wyf3")
+tonemap_mode = 2
+sdfgi_min_cell_size = 0.334375
+glow_enabled = true
+glow_hdr_scale = 4.0
+volumetric_fog_density = 0.2
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnsk1"]
+line_spacing = 0.0
+font_size = 162
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwgxs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnet"]
+albedo_color = Color(0.68235296, 0.6745098, 0.4509804, 1)
+albedo_texture = ExtResource("5_gbfbk")
+albedo_texture_force_srgb = true
+emission = Color(1, 1, 1, 1)
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+
+[node name="World" type="Node" unique_id=1774199772]
+script = ExtResource("1_gbfbk")
+levels = Array[PackedScene]([ExtResource("2_ioo17"), ExtResource("3_wse8f"), ExtResource("4_ic0uy")])
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=982959039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9170928, 0)
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="Node3D2" unique_id=911778433]
+_spawnable_scenes = PackedStringArray("res://scenes/mouse_decal.tscn")
+spawn_path = NodePath("../../CanvasLayer/PlayerCursors")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1519457857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4670992, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D" unique_id=1508325074]
+_spawnable_scenes = PackedStringArray("res://scenes/player.tscn")
+spawn_path = NodePath("../../Players")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1019559228]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1943106861]
+environment = SubResource("Environment_k0juu")
+
+[node name="Platform" type="Node3D" parent="." unique_id=202950321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0983071, 0)
+
+[node name="CameraAnchor" type="Node3D" parent="." unique_id=488327854]
+transform = Transform3D(1, 0, 0, 0, 0.54463893, 0.83867055, 0, -0.83867055, 0.54463893, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=1790491250 groups=["global_camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.99254614, 0.12186935, 0, -0.12186935, 0.99254614, 0, 1.788, 64.906)
+current = true
+fov = 50.0
+size = 33.401
+near = 10.0
+far = 1000000.0
+
+[node name="Players" type="Node3D" parent="." unique_id=762691890]
+
+[node name="TitleScreen" type="CanvasLayer" parent="." unique_id=759749094]
+
+[node name="PanelContainer" type="PanelContainer" parent="TitleScreen" unique_id=440534644]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 465.0
+offset_top = 210.0
+offset_right = -465.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/PanelContainer" unique_id=2097774200]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/PanelContainer/MarginContainer" unique_id=1273446815]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1356496065]
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_nnsk1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Host" type="Button" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1400052745]
+layout_mode = 2
+text = "Host"
+
+[node name="Client" type="Button" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1722046565]
+layout_mode = 2
+text = "Client"
+
+[node name="TextEdit" type="TextEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1939560296]
+custom_minimum_size = Vector2(10, 40)
+layout_mode = 2
+placeholder_text = "Port"
+
+[node name="LobbyUI" type="CanvasLayer" parent="." unique_id=1542916873]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="LobbyUI" unique_id=715431878]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -174.0
+offset_right = 208.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwgxs")
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyUI/PanelContainer" unique_id=2029051249]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="LobbyUI/PanelContainer/MarginContainer" unique_id=301985865]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=38147938]
+layer = 3
+
+[node name="PlayerCursors" type="Control" parent="CanvasLayer" unique_id=1107086867]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1449315070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3748169, -13.6008415, 0.061426163)
+size = Vector3(227, 0.06921387, 164)
+material = SubResource("StandardMaterial3D_qfnet")
+
+[node name="Map1" parent="." unique_id=936527883 instance=ExtResource("6_2o6r5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9, 0)
+
+[node name="Map2" parent="." unique_id=629567266 instance=ExtResource("7_70uel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -1.9, 0)
+
+[node name="Map3" parent="." unique_id=1701562519 instance=ExtResource("8_hiqwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -1.9, 0)
+
+[connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="LobbyUI/PanelContainer/MarginContainer/Start" to="." method="_on_start_pressed"]

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://ddc8k6gybq8ur"]
+
+[ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://entities/characters/player.gd" id="1_b0wws"]
+[ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://entities/weapons/bullet.tscn" id="2_udy2f"]
+[ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://entities/characters/Player_Model.glb" id="3_bywx5"]
+[ext_resource type="PackedScene" uid="uid://bnw0u32q27ygg" path="res://entities/characters/outline.tscn" id="4_ftk0g"]
+[ext_resource type="PackedScene" uid="uid://cdlfn813pmn21" path="res://entities/characters/x-ray.tscn" id="5_c4d4v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iwpo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7tup"]
+resource_local_to_scene = true
+albedo_color = Color(0.7372549, 0.18431373, 0.22745098, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cvunv"]
+size = Vector3(0.7, 0.4, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvunv"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Anchor:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Anchor:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_b0wws")
+Bullet = ExtResource("2_udy2f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
+shape = SubResource("CapsuleShape3D_bu0v1")
+
+[node name="Anchor" type="Node3D" parent="." unique_id=165453321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skin" parent="Anchor" unique_id=1289105819 instance=ExtResource("3_bywx5")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
+
+[node name="Outline" parent="Anchor" unique_id=2019037664 instance=ExtResource("4_ftk0g")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
+
+[node name="X-ray" parent="Anchor" unique_id=1395521162 instance=ExtResource("5_c4d4v")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2029733507]
+visible = false
+mesh = SubResource("CapsuleMesh_iwpo4")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7tup")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1423569344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.026768684)
+
+[node name="Marker3D" type="Marker3D" parent="Weapon" unique_id=683210559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25435662)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Weapon" unique_id=1287860943]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.0678647)
+visible = false
+mesh = SubResource("PrismMesh_cvunv")
+surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
+replication_config = SubResource("SceneReplicationConfig_g2els")

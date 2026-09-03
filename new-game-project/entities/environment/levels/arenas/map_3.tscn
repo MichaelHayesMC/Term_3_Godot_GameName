@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://q8pfboy8jj45"]
+
+[ext_resource type="Script" uid="uid://b4ixjvgc8spe3" path="res://entities/environment/levels/arenas/water.gd" id="1_qt8r7"]
+
+[node name="Map3" unique_id=1701562519]
+
+[node name="Water" parent="." index="21" unique_id=1266980933]
+script = ExtResource("1_qt8r7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="23" unique_id=1609602898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.512268, -0.25, -0.6)
+visible = false
+use_collision = true
+size = Vector3(20.024536, 0.5, 8.791016)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="24" unique_id=545080001]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012268066, -0.25, -14.6)
+visible = false
+use_collision = true
+size = Vector3(20.024536, 0.5, 8.791016)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="25" unique_id=2132795000]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, -0.087732315, -0.25, 12.4)
+visible = false
+use_collision = true
+size = Vector3(20.024536, 0.5, 8.791016)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="26" unique_id=271980550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.487732, -0.25, -0.6)
+visible = false
+use_collision = true
+size = Vector3(20.024536, 0.5, 8.791016)
