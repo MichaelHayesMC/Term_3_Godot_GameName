@@ -17,7 +17,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1287965831]
-transform = Transform3D(30, 0, 0, 0, -1, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(-42.426407, 0, -42.426407, 0, -1, 0, 42.426407, 0, -42.426407, 0, 0, 0)
 mesh = SubResource("BoxMesh_o1atq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=983728448]
