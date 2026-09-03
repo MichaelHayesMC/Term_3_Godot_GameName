@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cxy2x6qkwggo2"]
 
-[ext_resource type="PackedScene" uid="uid://gf1tbbwtsvoy" path="res://entities/environment/levels/arenas/Map2.glb" id="1_u0eab"]
+[ext_resource type="PackedScene" uid="uid://gf1tbbwtsvoy" path="res://entities/environment/new/arenas/YarnBall/Map2.glb" id="1_u0eab"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnk1y"]
 albedo_color = Color(0.90588236, 0.0627451, 0.1882353, 1)

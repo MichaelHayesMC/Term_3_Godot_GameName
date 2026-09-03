@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://gm0gu85k6h5v"
-path="res://.godot/imported/Map1.glb-7c100706d3d8f24cd68d4456fcfc9178.scn"
+uid="uid://gf1tbbwtsvoy"
+path="res://.godot/imported/Map2.glb-ba0ead5ccd4fcb53970326dce5fff410.scn"
 
 [deps]
 
-source_file="res://entities/environment/levels/arenas/Map1.glb"
-dest_files=["res://.godot/imported/Map1.glb-7c100706d3d8f24cd68d4456fcfc9178.scn"]
+source_file="res://entities/environment/new/arenas/YarnBall/Map2.glb"
+dest_files=["res://.godot/imported/Map2.glb-ba0ead5ccd4fcb53970326dce5fff410.scn"]
 
 [params]
 

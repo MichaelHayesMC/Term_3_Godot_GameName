@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdlfn813pmn21"]
 
 [ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://entities/characters/Player_Model.glb" id="1_kr6nt"]
-[ext_resource type="Script" uid="uid://cj605fhlbejq6" path="res://entities/characters/outline.gd" id="2_qlfc7"]
+[ext_resource type="Script" uid="uid://cj605fhlbejq6" path="res://entities/characters/vfx/outline.gd" id="2_qlfc7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlfc7"]
 render_priority = 1
@@ -24,38 +24,38 @@ stencil_color = Color(1, 1, 1, 1)
 [node name="X-ray" unique_id=1289105819 instance=ExtResource("1_kr6nt")]
 script = ExtResource("2_qlfc7")
 
-[node name="Circle" parent="." index="0" unique_id=1669381432]
+[node name="Circle" parent="." index="0" unique_id=149058900]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Circle_001" parent="." index="1" unique_id=1176402241]
+[node name="Circle_001" parent="." index="1" unique_id=2016467894]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Cube" parent="." index="2" unique_id=1317270695]
+[node name="Cube" parent="." index="2" unique_id=89300022]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Cube_001" parent="Cube" index="0" unique_id=1655259283]
+[node name="Cube_001" parent="Cube" index="0" unique_id=158922410]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Cube_006" parent="Cube" index="1" unique_id=2056192226]
+[node name="Cube_006" parent="Cube" index="1" unique_id=278159021]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Cube_002" parent="." index="3" unique_id=386692199]
+[node name="Cube_002" parent="." index="3" unique_id=272312720]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Cube_003" parent="." index="4" unique_id=381306616]
+[node name="Cube_003" parent="." index="4" unique_id=872449417]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Plane_001" parent="Lattice_001" parent_id_path=PackedInt32Array(1879544698) index="0" unique_id=803407933]
+[node name="Plane_001" parent="Lattice_001" parent_id_path=PackedInt32Array(107308096) index="0" unique_id=622523541]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Plane_002" parent="Lattice_001" parent_id_path=PackedInt32Array(1879544698) index="1" unique_id=1197652160]
+[node name="Plane_002" parent="Lattice_001" parent_id_path=PackedInt32Array(107308096) index="1" unique_id=1074859393]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Plane_003" parent="Lattice_002" parent_id_path=PackedInt32Array(1816585139) index="0" unique_id=1177866955]
+[node name="Plane_003" parent="Lattice_002" parent_id_path=PackedInt32Array(1844989243) index="0" unique_id=859612446]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Plane_004" parent="Lattice_002" parent_id_path=PackedInt32Array(1816585139) index="1" unique_id=1305221564]
+[node name="Plane_004" parent="Lattice_002" parent_id_path=PackedInt32Array(1844989243) index="1" unique_id=1938127486]
 material_override = SubResource("StandardMaterial3D_scvlm")
 
-[node name="Plane" parent="." index="9" unique_id=371199388]
+[node name="Plane" parent="." index="9" unique_id=678751295]
 material_override = SubResource("StandardMaterial3D_scvlm")

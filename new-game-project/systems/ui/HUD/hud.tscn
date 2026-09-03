@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://eo30kruldshw"]
 
-[ext_resource type="Script" uid="uid://bk3u4nuea5lx8" path="res://systems/ui/timer_hud.gd" id="1_il7gk"]
-[ext_resource type="PackedScene" uid="uid://dm0a8tcy3qrnr" path="res://systems/ui/modifiers_hud.tscn" id="2_il7gk"]
-[ext_resource type="Script" uid="uid://i1nklnuj25uj" path="res://systems/ui/h_box_container.gd" id="3_wnkyb"]
-[ext_resource type="PackedScene" uid="uid://0ydfatbbqu2b" path="res://systems/ui/player_pfp.tscn" id="4_bam0r"]
-[ext_resource type="Script" uid="uid://dthe1ihliim5j" path="res://systems/ui/scoreboard.gd" id="5_re4in"]
+[ext_resource type="Script" uid="uid://bk3u4nuea5lx8" path="res://systems/ui/HUD/timer_hud.gd" id="1_6fi6k"]
+[ext_resource type="PackedScene" uid="uid://dm0a8tcy3qrnr" path="res://systems/ui/Modifiers/modifiers_hud.tscn" id="2_uo2fv"]
+[ext_resource type="Script" uid="uid://i1nklnuj25uj" path="res://systems/ui/Modifiers/h_box_container.gd" id="3_047uy"]
+[ext_resource type="PackedScene" uid="uid://0ydfatbbqu2b" path="res://systems/ui/Modifiers/player_pfp.tscn" id="4_5pdws"]
+[ext_resource type="Script" uid="uid://dthe1ihliim5j" path="res://systems/ui/HUD/scoreboard.gd" id="5_uo2fv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qfnet"]
 font_size = 90
@@ -23,11 +23,11 @@ anchor_right = 0.5920139
 anchor_bottom = 0.13271604
 grow_horizontal = 2
 color = Color(1, 1, 1, 0.49803922)
-script = ExtResource("1_il7gk")
+script = ExtResource("1_6fi6k")
 timer_lb = NodePath("Timer_Lb")
 default_in_game_minutes = 0
 default_in_game_seconds = 30
-modifiers_hud = ExtResource("2_il7gk")
+modifiers_hud = ExtResource("2_uo2fv")
 
 [node name="Timer_Lb" type="Label" parent="Timer_HUD" unique_id=1072311897]
 layout_mode = 0
@@ -49,24 +49,24 @@ offset_bottom = 144.0
 grow_horizontal = 0
 theme_override_constants/separation = 15
 alignment = 2
-script = ExtResource("3_wnkyb")
+script = ExtResource("3_047uy")
 
-[node name="Player_Pfp" parent="HBoxContainer" unique_id=959515229 instance=ExtResource("4_bam0r")]
+[node name="Player_Pfp" parent="HBoxContainer" unique_id=959515229 instance=ExtResource("4_5pdws")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 color = Color(0, 1, 1, 1)
 
-[node name="Player_Pfp2" parent="HBoxContainer" unique_id=706862533 instance=ExtResource("4_bam0r")]
+[node name="Player_Pfp2" parent="HBoxContainer" unique_id=706862533 instance=ExtResource("4_5pdws")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Player_Pfp3" parent="HBoxContainer" unique_id=825478279 instance=ExtResource("4_bam0r")]
+[node name="Player_Pfp3" parent="HBoxContainer" unique_id=825478279 instance=ExtResource("4_5pdws")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 color = Color(1, 0.49803922, 0, 1)
 
-[node name="Player_Pfp4" parent="HBoxContainer" unique_id=1841829233 instance=ExtResource("4_bam0r")]
+[node name="Player_Pfp4" parent="HBoxContainer" unique_id=1841829233 instance=ExtResource("4_5pdws")]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 color = Color(1, 0, 0, 1)
@@ -117,7 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_re4in")
+script = ExtResource("5_uo2fv")
 
 [node name="Panel" type="Panel" parent="Scoreboard" unique_id=1301196090]
 layout_mode = 0

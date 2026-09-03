@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bj34rktmx0wv0"]
 
-[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/levels/arenas/arena.gd" id="1_ibfen"]
+[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/old/arena.gd" id="1_ibfen"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ibfen"]
 

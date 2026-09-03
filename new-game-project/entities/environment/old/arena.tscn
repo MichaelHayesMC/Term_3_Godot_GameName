@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1y0se7c08qwa"]
 
-[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/levels/arenas/arena.gd" id="1_e05a3"]
+[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/old/arena.gd" id="1_e05a3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_olpmc"]
 size = Vector3(19.939697, 4.947754, 0.10058594)

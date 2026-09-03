@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfv4rxkda6xi7"]
 
-[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/levels/arenas/arena.gd" id="1_3tbw4"]
+[ext_resource type="Script" uid="uid://bsw82u1grexo1" path="res://entities/environment/old/arena.gd" id="1_3tbw4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwwqn"]
 transparency = 1

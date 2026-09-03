@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ddc8k6gybq8ur"]
 
-[ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://entities/characters/player.gd" id="1_b0wws"]
-[ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://entities/weapons/bullet.tscn" id="2_udy2f"]
-[ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://entities/characters/Player_Model.glb" id="3_bywx5"]
-[ext_resource type="PackedScene" uid="uid://bnw0u32q27ygg" path="res://entities/characters/outline.tscn" id="4_ftk0g"]
-[ext_resource type="PackedScene" uid="uid://cdlfn813pmn21" path="res://entities/characters/x-ray.tscn" id="5_c4d4v"]
+[ext_resource type="Script" uid="uid://82l1c27xikiy" path="res://entities/characters/player.gd" id="1_iwpo4"]
+[ext_resource type="PackedScene" uid="uid://dtclgpudk4ih3" path="res://entities/weapons/Bullet/bullet.tscn" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://bnw0u32q27ygg" path="res://entities/characters/vfx/outline.tscn" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cdlfn813pmn21" path="res://entities/characters/vfx/x-ray.tscn" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://7oq4j5hwmees" path="res://entities/characters/Player_Model.glb" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
 
@@ -37,8 +37,8 @@ properties/3/replication_mode = 1
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 4
 collision_mask = 9
-script = ExtResource("1_b0wws")
-Bullet = ExtResource("2_udy2f")
+script = ExtResource("1_iwpo4")
+Bullet = ExtResource("2_g2els")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162127080]
 shape = SubResource("CapsuleShape3D_bu0v1")
@@ -46,13 +46,13 @@ shape = SubResource("CapsuleShape3D_bu0v1")
 [node name="Anchor" type="Node3D" parent="." unique_id=165453321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Skin" parent="Anchor" unique_id=1289105819 instance=ExtResource("3_bywx5")]
+[node name="Skin" parent="Anchor" unique_id=1289105819 instance=ExtResource("5_qlg0r")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
 
-[node name="Outline" parent="Anchor" unique_id=2019037664 instance=ExtResource("4_ftk0g")]
+[node name="Outline" parent="Anchor" unique_id=2019037664 instance=ExtResource("3_qlg0r")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
 
-[node name="X-ray" parent="Anchor" unique_id=1395521162 instance=ExtResource("5_c4d4v")]
+[node name="X-ray" parent="Anchor" unique_id=1395521162 instance=ExtResource("4_tuyoq")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.3, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2029733507]

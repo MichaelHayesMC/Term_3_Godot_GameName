@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://gf1tbbwtsvoy"
-path="res://.godot/imported/Map2.glb-7a81efb7347ef1f8f857f2c67d34946a.scn"
+uid="uid://gm0gu85k6h5v"
+path="res://.godot/imported/Map1.glb-9704dc15cc12222d673f5677ea22e47d.scn"
 
 [deps]
 
-source_file="res://entities/environment/levels/arenas/Map2.glb"
-dest_files=["res://.godot/imported/Map2.glb-7a81efb7347ef1f8f857f2c67d34946a.scn"]
+source_file="res://entities/environment/new/arenas/Forest/Map1.glb"
+dest_files=["res://.godot/imported/Map1.glb-9704dc15cc12222d673f5677ea22e47d.scn"]
 
 [params]
 

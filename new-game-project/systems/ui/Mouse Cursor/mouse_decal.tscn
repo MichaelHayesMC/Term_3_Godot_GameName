@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cluva5choy51f"]
 
-[ext_resource type="Texture2D" uid="uid://dlw3hds838jh6" path="res://systems/ui/pointer_d.png" id="1_64emw"]
-[ext_resource type="Script" uid="uid://dvb3avidmljwa" path="res://systems/ui/mouse_decal.gd" id="2_64emw"]
+[ext_resource type="Texture2D" uid="uid://dlw3hds838jh6" path="res://systems/ui/Mouse Cursor/pointer_d.png" id="1_0xula"]
+[ext_resource type="Script" uid="uid://dvb3avidmljwa" path="res://systems/ui/Mouse Cursor/mouse_decal.gd" id="2_bb15k"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0xula"]
 properties/0/path = NodePath(".:position")
@@ -19,8 +19,8 @@ texture_filter = 2
 offset_right = 32.0
 offset_bottom = 32.0
 mouse_filter = 2
-texture = ExtResource("1_64emw")
-script = ExtResource("2_64emw")
+texture = ExtResource("1_0xula")
+script = ExtResource("2_bb15k")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2075981437]
 replication_config = SubResource("SceneReplicationConfig_0xula")
@@ -34,4 +34,4 @@ offset_top = -1.0
 offset_right = 33.0
 offset_bottom = 33.0
 mouse_filter = 2
-texture = ExtResource("1_64emw")
+texture = ExtResource("1_0xula")

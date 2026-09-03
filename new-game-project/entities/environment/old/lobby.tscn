@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://tqykh5rxjluu"]
 
+<<<<<<< HEAD:new-game-project/entities/environment/levels/lobby/lobby.tscn
 [ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://entities/enemies/dummy.tscn" id="1_mdsas"]
+=======
+[ext_resource type="PackedScene" uid="uid://coe6gt8xp4yqw" path="res://scenes/dummy.tscn" id="1_o1atq"]
+>>>>>>> parent of d9e1991 (Overhaul of Godot Locations):new-game-project/scenes/lobby.tscn
 
 [sub_resource type="BoxMesh" id="BoxMesh_o1atq"]
 

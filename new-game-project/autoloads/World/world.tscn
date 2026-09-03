@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://coar0w52ewb50"]
 
-[ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://autoloads/world.gd" id="1_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://c1y0se7c08qwa" path="res://entities/environment/levels/arenas/arena.tscn" id="2_ioo17"]
-[ext_resource type="PackedScene" uid="uid://bj34rktmx0wv0" path="res://entities/environment/levels/arenas/arena2.tscn" id="3_wse8f"]
-[ext_resource type="PackedScene" uid="uid://cfv4rxkda6xi7" path="res://entities/environment/levels/arenas/arena3.tscn" id="4_ic0uy"]
-[ext_resource type="Texture2D" uid="uid://di121otsvx1yl" path="res://entities/environment/levels/arenas/5184157.jpg" id="5_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://dvm600yohx2b0" path="res://entities/environment/levels/arenas/map_1.tscn" id="6_2o6r5"]
-[ext_resource type="PackedScene" uid="uid://cxy2x6qkwggo2" path="res://entities/environment/levels/arenas/map_2.tscn" id="7_70uel"]
-[ext_resource type="PackedScene" uid="uid://q8pfboy8jj45" path="res://entities/environment/levels/arenas/map_3.tscn" id="8_hiqwa"]
+[ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://autoloads/World/world.gd" id="1_1ejtd"]
+[ext_resource type="PackedScene" uid="uid://c1y0se7c08qwa" path="res://entities/environment/old/arena.tscn" id="2_lxdpt"]
+[ext_resource type="PackedScene" uid="uid://bj34rktmx0wv0" path="res://entities/environment/old/arena2.tscn" id="3_js6in"]
+[ext_resource type="PackedScene" uid="uid://cfv4rxkda6xi7" path="res://entities/environment/old/arena3.tscn" id="4_hfanp"]
+[ext_resource type="Texture2D" uid="uid://di121otsvx1yl" path="res://entities/environment/new/arenas/Background.jpg" id="5_1ejtd"]
+[ext_resource type="PackedScene" uid="uid://dvm600yohx2b0" path="res://entities/environment/new/arenas/Forest/map_1.tscn" id="6_lv8u0"]
+[ext_resource type="PackedScene" uid="uid://cxy2x6qkwggo2" path="res://entities/environment/new/arenas/YarnBall/map_2.tscn" id="7_4epwo"]
+[ext_resource type="PackedScene" uid="uid://q8pfboy8jj45" path="res://entities/environment/new/arenas/Tropical/map_3.tscn" id="8_3kjrs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,28 +38,26 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnet"]
 albedo_color = Color(0.68235296, 0.6745098, 0.4509804, 1)
-albedo_texture = ExtResource("5_gbfbk")
+albedo_texture = ExtResource("5_1ejtd")
 albedo_texture_force_srgb = true
 emission = Color(1, 1, 1, 1)
 subsurf_scatter_enabled = true
 subsurf_scatter_strength = 1.0
 
 [node name="World" type="Node" unique_id=1774199772]
-script = ExtResource("1_gbfbk")
-levels = Array[PackedScene]([ExtResource("2_ioo17"), ExtResource("3_wse8f"), ExtResource("4_ic0uy")])
+script = ExtResource("1_1ejtd")
+levels = Array[PackedScene]([ExtResource("2_lxdpt"), ExtResource("3_js6in"), ExtResource("4_hfanp")])
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=982959039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9170928, 0)
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="Node3D2" unique_id=911778433]
-_spawnable_scenes = PackedStringArray("res://scenes/mouse_decal.tscn")
 spawn_path = NodePath("../../CanvasLayer/PlayerCursors")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1519457857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4670992, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D" unique_id=1508325074]
-_spawnable_scenes = PackedStringArray("res://scenes/player.tscn")
 spawn_path = NodePath("../../Players")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1019559228]
@@ -169,13 +167,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3748169, -13.6008415, 0.061
 size = Vector3(227, 0.06921387, 164)
 material = SubResource("StandardMaterial3D_qfnet")
 
-[node name="Map1" parent="." unique_id=936527883 instance=ExtResource("6_2o6r5")]
+[node name="Map1" parent="." unique_id=936527883 instance=ExtResource("6_lv8u0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9, 0)
 
-[node name="Map2" parent="." unique_id=629567266 instance=ExtResource("7_70uel")]
+[node name="Map2" parent="." unique_id=629567266 instance=ExtResource("7_4epwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, -1.9, 0)
 
-[node name="Map3" parent="." unique_id=1701562519 instance=ExtResource("8_hiqwa")]
+[node name="Map3" parent="." unique_id=1701562519 instance=ExtResource("8_3kjrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -1.9, 0)
 
 [connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]

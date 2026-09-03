@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://q8pfboy8jj45"]
 
-[ext_resource type="Script" uid="uid://b4ixjvgc8spe3" path="res://entities/environment/levels/arenas/water.gd" id="1_qt8r7"]
+[ext_resource type="PackedScene" uid="uid://b34irqapjxg5r" path="res://entities/environment/new/arenas/Tropical/Map3.glb" id="1_3ioft"]
+[ext_resource type="Script" uid="uid://b4ixjvgc8spe3" path="res://entities/environment/new/arenas/Tropical/water.gd" id="2_fm2dq"]
 
-[node name="Map3" unique_id=1701562519]
+[node name="Map3" unique_id=1701562519 instance=ExtResource("1_3ioft")]
 
 [node name="Water" parent="." index="21" unique_id=1266980933]
-script = ExtResource("1_qt8r7")
+script = ExtResource("2_fm2dq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="23" unique_id=1609602898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.512268, -0.25, -0.6)

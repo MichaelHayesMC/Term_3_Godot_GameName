@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtclgpudk4ih3"]
 
-[ext_resource type="Script" uid="uid://r2klvmola8m2" path="res://entities/weapons/bullet.gd" id="1_mt7h7"]
+[ext_resource type="Script" uid="uid://r2klvmola8m2" path="res://entities/weapons/Bullet/bullet.gd" id="1_mkf8s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_h1aey"]
 
@@ -17,7 +17,7 @@ albedo_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
 [node name="Bullet" type="RigidBody3D" unique_id=1417648668]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_mt7h7")
+script = ExtResource("1_mkf8s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=901717452]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
