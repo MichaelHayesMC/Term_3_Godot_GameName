@@ -4,14 +4,14 @@ class_name World
 @onready var world = get_tree().current_scene
 
 @onready var title_screen: CanvasLayer = $TitleScreen
-@onready var HUD = preload("res://systems/ui/hud.tscn")
+@onready var HUD = preload("res://systems/ui/HUD/hud.tscn")
 @export var levels : Array[PackedScene]
 
 #signal player_colour
 
 const PORT = 9999
 const PlayerLoad = preload("res://entities/characters/player.tscn")
-const MouseLoad = preload("res://systems/ui/mouse_decal.tscn")
+const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
 var ip_test = "localhost"
