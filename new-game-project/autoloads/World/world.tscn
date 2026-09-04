@@ -122,7 +122,12 @@ text = "Host"
 layout_mode = 2
 text = "Client"
 
-[node name="TextEdit" type="TextEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1939560296]
+[node name="Label2" type="Label" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=2133804840]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextEdit" type="LineEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1787653882]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 40)
 layout_mode = 2
 placeholder_text = "Port"

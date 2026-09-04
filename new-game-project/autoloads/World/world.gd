@@ -13,13 +13,26 @@ const PORT = 9999
 const PlayerLoad = preload("res://entities/characters/player.tscn")
 const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
-var enet_peer = ENetMultiplayerPeer.new()
+var enet_peer = NodeTunnelPeer.new()
 var ip_test = "localhost"
+
+func _ready() -> void:
+	multiplayer.multiplayer_peer = enet_peer
+	enet_peer.connect_to_relay("relay.nodetunnel.io", "9998")
+	
+	await enet_peer.peer_connected
+	
+	%Label2.text = enet_peer.online_id
 
 func _on_host_pressed() -> void:
 	title_screen.hide()
-	enet_peer.create_server(PORT)
-	multiplayer.multiplayer_peer = enet_peer
+	
+	#await enet_peer.hosting
+	await enet_peer.authenticated
+	
+	DisplayServer.clipboard_set(enet_peer.online_id)
+	
+	enet_peer.host()
 	multiplayer.peer_connected.connect(add_player)
 	
 	add_player(multiplayer.get_unique_id())
@@ -29,7 +42,10 @@ func _on_host_pressed() -> void:
 
 func _on_client_pressed() -> void:
 	title_screen.hide()
-	enet_peer.create_client(ip_test, PORT)
+	enet_peer.join(%TextEdit)
+	
+	await enet_peer.joined
+	
 	multiplayer.multiplayer_peer = enet_peer
 	
 	#player_colour.emit()
@@ -107,19 +123,3 @@ func HUD_display():
 		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
-
-func upnp_setup():
-	var upnp = UPNP.new()
-	
-	var discover_result = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result) 
-	
-	assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-		
-	var map_result = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-		
-	print("Success! Join Address: %s" % upnp.query_external_address())
