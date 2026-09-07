@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://duj0falcbfd1q"
+WindowTiler="*uid://cmqjajhjgffm1"
+NetworkSimulator="*uid://1y2ey1e6qjwr"
+Noray="*uid://gu4bv4tgms3x"
+PacketHandshake="*uid://tt3j25a05n7c"
+Multiplayer="*uid://cg77es5daaxl5"
 
 [display]
 
@@ -25,6 +30,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/netfox.internals/plugin.cfg", "res://addons/netfox.noray/plugin.cfg")
 
 [global_group]
 

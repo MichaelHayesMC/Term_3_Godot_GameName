@@ -51,13 +51,11 @@ levels = Array[PackedScene]([ExtResource("2_lxdpt"), ExtResource("3_js6in"), Ext
 [node name="Node3D2" type="Node3D" parent="." unique_id=982959039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9170928, 0)
 
-[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="Node3D2" unique_id=911778433]
-spawn_path = NodePath("../../CanvasLayer/PlayerCursors")
-
 [node name="Node3D" type="Node3D" parent="." unique_id=1519457857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4670992, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D" unique_id=1508325074]
+_spawnable_scenes = PackedStringArray("uid://ddc8k6gybq8ur")
 spawn_path = NodePath("../../Players")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1019559228]
