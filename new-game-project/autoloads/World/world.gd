@@ -25,29 +25,25 @@ func _ready() -> void:
 	%Label2.text = enet_peer.online_id
 
 func _on_host_pressed() -> void:
-	title_screen.hide()
+	enet_peer.host()
 	
 	#await enet_peer.hosting
-	await enet_peer.authenticated
+	await enet_peer.hosting
 	
 	DisplayServer.clipboard_set(enet_peer.online_id)
 	
-	enet_peer.host()
-	multiplayer.peer_connected.connect(add_player)
-	
 	add_player(multiplayer.get_unique_id())
 	$LobbyUI.show()
+	title_screen.hide()
 	
 	#upnp_setup() # Blueprint to create a online multiplayer hosting and client system unrestricted to the confines of local multiplayer
 
 func _on_client_pressed() -> void:
-	title_screen.hide()
-	enet_peer.join(%TextEdit)
+	enet_peer.join(%TextEdit.text)
 	
 	await enet_peer.joined
 	
-	multiplayer.multiplayer_peer = enet_peer
-	
+	title_screen.hide()
 	#player_colour.emit()
 
 func add_player(peer_id):

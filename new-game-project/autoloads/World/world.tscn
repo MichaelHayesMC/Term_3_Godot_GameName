@@ -125,6 +125,7 @@ text = "Client"
 [node name="Label2" type="Label" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=2133804840]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Text"
 
 [node name="TextEdit" type="LineEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1787653882]
 unique_name_in_owner = true
