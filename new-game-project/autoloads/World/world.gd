@@ -2,10 +2,14 @@ extends Node
 class_name World
 
 @onready var world = get_tree().current_scene
-
 @onready var title_screen: CanvasLayer = $TitleScreen
 @onready var lobby_ui: CanvasLayer = $LobbyUI
 @onready var HUD = preload("res://systems/ui/HUD/hud.tscn")
+
+@onready var oid_input: LineEdit = $TitleScreen/PanelContainer/MarginContainer/VBoxContainer/OIDInput
+@onready var oid_lb: Label = $TitleScreen/PanelContainer/MarginContainer/VBoxContainer/OID
+
+
 @export var levels : Array[PackedScene]
 
 #signal player_colour
@@ -16,6 +20,10 @@ const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
 var ip_test = "localhost"
+
+func _ready() -> void:
+	await Multiplayer.noray_connected
+	oid_lb.text = Noray.oid
 
 func _on_host_pressed() -> void:
 	Multiplayer.host()
@@ -30,7 +38,7 @@ func _on_host_pressed() -> void:
 	#upnp_setup() # Blueprint to create a online multiplayer hosting and client system unrestricted to the confines of local multiplayer
 
 func _on_client_pressed() -> void:
-	Multiplayer.join()
+	Multiplayer.join(oid_input.text)
 	
 	title_screen.hide()
 
@@ -107,3 +115,6 @@ func HUD_display():
 		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
+
+func _on_copy_oid_pressed() -> void:
+	DisplayServer.clipboard_set(Noray.oid)

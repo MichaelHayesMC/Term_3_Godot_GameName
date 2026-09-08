@@ -1,7 +1,9 @@
 extends Node
 
-const NORAY_ADDRESS = "localhost"
-const NORAY_PORT = 9999
+signal noray_connected
+
+const NORAY_ADDRESS = "tomfol.io"
+const NORAY_PORT = 8890
 
 var is_host = false
 var external_oid = ""
@@ -19,6 +21,7 @@ func on_noray_connected():
 	Noray.register_host()
 	await Noray.on_pid
 	await Noray.register_remote()
+	noray_connected.emit()
 
 func host():
 	print("hosting")

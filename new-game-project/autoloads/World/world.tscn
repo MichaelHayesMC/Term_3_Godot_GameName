@@ -48,9 +48,6 @@ subsurf_scatter_strength = 1.0
 script = ExtResource("1_1ejtd")
 levels = Array[PackedScene]([ExtResource("2_lxdpt"), ExtResource("3_js6in"), ExtResource("4_hfanp")])
 
-[node name="Node3D2" type="Node3D" parent="." unique_id=982959039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9170928, 0)
-
 [node name="Node3D" type="Node3D" parent="." unique_id=1519457857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4670992, 0)
 
@@ -120,10 +117,20 @@ text = "Host"
 layout_mode = 2
 text = "Client"
 
-[node name="TextEdit" type="TextEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1939560296]
-custom_minimum_size = Vector2(10, 40)
+[node name="OIDInput" type="LineEdit" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=132680757]
 layout_mode = 2
-placeholder_text = "Port"
+placeholder_text = "HOST OID"
+
+[node name="CopyOID" type="Button" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1760131053]
+custom_minimum_size = Vector2(10, 30)
+layout_mode = 2
+text = "Copy OID"
+
+[node name="OID" type="Label" parent="TitleScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=459779653]
+layout_mode = 2
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LobbyUI" type="CanvasLayer" parent="." unique_id=1542916873]
 visible = false
@@ -176,4 +183,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -1.9, 0)
 
 [connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="TitleScreen/PanelContainer/MarginContainer/VBoxContainer/CopyOID" to="." method="_on_copy_oid_pressed"]
 [connection signal="pressed" from="LobbyUI/PanelContainer/MarginContainer/Start" to="." method="_on_start_pressed"]
