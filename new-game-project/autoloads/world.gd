@@ -24,8 +24,6 @@ func _on_host_pressed() -> void:
 	
 	add_player(multiplayer.get_unique_id())
 	$LobbyUI.show()
-	
-	#upnp_setup() # Blueprint to create a online multiplayer hosting and client system unrestricted to the confines of local multiplayer
 
 func _on_client_pressed() -> void:
 	title_screen.hide()
@@ -107,19 +105,3 @@ func HUD_display():
 		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
-
-func upnp_setup():
-	var upnp = UPNP.new()
-	
-	var discover_result = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result) 
-	
-	assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-		
-	var map_result = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-		
-	print("Success! Join Address: %s" % upnp.query_external_address())
