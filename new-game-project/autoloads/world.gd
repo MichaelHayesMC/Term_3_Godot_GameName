@@ -4,17 +4,60 @@ class_name World
 @onready var world = get_tree().current_scene
 
 @onready var title_screen: CanvasLayer = $TitleScreen
-@onready var HUD = preload("res://scenes/hud.tscn")
+@onready var HUD = preload("res://systems/ui/hud.tscn")
 @export var levels : Array[PackedScene]
 
 #signal player_colour
 
 const PORT = 9999
-const PlayerLoad = preload("res://scenes/player.tscn")
-const MouseLoad = preload("res://scenes/mouse_decal.tscn")
+const PlayerLoad = preload("res://entities/characters/player.tscn")
+const MouseLoad = preload("res://systems/ui/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
 var ip_test = "localhost"
+
+###############################################################
+@onready var spawner: FusionSpawner = $FusionSpawner
+@onready var photon_host: Button = %"Photon Host"
+@onready var photon_client: Button = %"Photon Client"
+
+func _ready() -> void:
+	Fusion.room_joined.connect(_on_room_joined)
+	photon_host.pressed.connect(_connect_room)
+	photon_client.pressed.connect(_join_room)
+	spawner.add_spawnable_scene(PlayerLoad)
+
+func _connect_room():
+	print("clicked connect")
+	var user_id = "user_%d" % randi()
+	Fusion.connect_to_photon(user_id)
+	Fusion.connected_to_photon.connect(func():
+		var options := FusionRoomOptions.new()
+		options.max_players = 4
+		Fusion.create_room(%RoomID.text, options)
+	)
+	$LobbyUI.show()
+	title_screen.hide()
+
+func _join_room():
+	print("clicked connect")
+	var user_id = "user_%d" % randi()
+	Fusion.connect_to_photon(user_id)
+	Fusion.connected_to_photon.connect(func():
+		var options := FusionRoomOptions.new()
+		options.max_players = 4
+		print("trying to join/create room as user: ", user_id)
+		Fusion.join_room(%RoomID.text, options)
+	)
+	title_screen.hide()
+
+func _on_room_joined():
+	var pos = Vector3(0, 1, 0)
+	var player = spawner.spawn()
+	player.position = pos
+	print("Joined room and spawned player scene")
+
+###############################################################
 
 func _on_host_pressed() -> void:
 	title_screen.hide()
