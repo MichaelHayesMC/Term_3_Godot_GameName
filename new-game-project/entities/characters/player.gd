@@ -3,6 +3,9 @@ class_name Player
 
 signal score_changed(new_score: int)
 
+@onready var replicator: FusionServerReplicator = $FusionServerReplicator
+
+
 @onready var camera_3d = get_tree().get_first_node_in_group("global_camera")
 @onready var mat = $MeshInstance3D.get_active_material(0) as StandardMaterial3D
 @export var Bullet: PackedScene
@@ -60,6 +63,9 @@ func apply_card(card_data: Dictionary) -> void:
 
 
 func _ready() -> void:
+	if !replicator.has_authority():
+		return
+	
 	GameManager.players.append(name)
 	add_to_group("players")
 	colour_change()
@@ -70,7 +76,7 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority():
+	if !replicator.has_authority():
 		return
 
 	var space_state = get_world_3d().direct_space_state

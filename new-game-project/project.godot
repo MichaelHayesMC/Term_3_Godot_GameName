@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="New Game Project"
+run/main_scene="uid://coar0w52ewb50"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -32,7 +33,7 @@ enabled=PackedStringArray()
 [fusion]
 
 connection/app_id="2181fce9-90dd-46e5-af3e-59866ef46912"
-connection/default_region="au"
+connection/default_region="best"
 
 [global_group]
 

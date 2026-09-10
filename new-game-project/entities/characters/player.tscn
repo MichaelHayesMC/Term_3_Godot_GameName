@@ -34,6 +34,33 @@ properties/3/path = NodePath("Anchor:scale")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
+[sub_resource type="FusionReplicationConfig" id="FusionReplicationConfig_b0wws"]
+property_count = 4
+properties/0/path = NodePath(":position")
+properties/0/max_array_capacity = 0
+properties/0/interface_tag = ""
+properties/0/interpolate = 0
+properties/0/element_type = 0
+properties/0/element_class_name = ""
+properties/1/path = NodePath(":rotation")
+properties/1/max_array_capacity = 0
+properties/1/interface_tag = ""
+properties/1/interpolate = 0
+properties/1/element_type = 0
+properties/1/element_class_name = ""
+properties/2/path = NodePath("Anchor:rotation")
+properties/2/max_array_capacity = 0
+properties/2/interface_tag = ""
+properties/2/interpolate = 0
+properties/2/element_type = 0
+properties/2/element_class_name = ""
+properties/3/path = NodePath("Anchor:scale")
+properties/3/max_array_capacity = 0
+properties/3/interface_tag = ""
+properties/3/interpolate = 0
+properties/3/element_type = 0
+properties/3/element_class_name = ""
+
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 4
 collision_mask = 9
@@ -74,3 +101,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
 replication_config = SubResource("SceneReplicationConfig_g2els")
+
+[node name="FusionServerReplicator" type="FusionServerReplicator" parent="." unique_id=1483417334]
+owner_mode = 5
+replication_config = SubResource("FusionReplicationConfig_b0wws")
+root_replication_mode = 1
+root_snap_distance = 50.0
+process_priority = -2147483647
+process_physics_priority = -2147483647
