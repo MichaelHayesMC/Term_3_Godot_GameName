@@ -13,7 +13,7 @@ const PORT = 9999
 const PlayerLoad = preload("res://entities/characters/player.tscn")
 const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
-var enet_peer = ENetMultiplayerPeer.new()
+var enet_peer = NodeTunnelPeer.new()
 var ip_test = "localhost"
 
 func _on_host_pressed() -> void:
