@@ -27,10 +27,13 @@ window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nodetunnel/plugin.cfg")
 
+=======
+>>>>>>> parent of ccb8971 (Node Tunnel Testing)
 =======
 >>>>>>> parent of ccb8971 (Node Tunnel Testing)
 [global_group]

@@ -13,10 +13,11 @@ const PORT = 9999
 const PlayerLoad = preload("res://entities/characters/player.tscn")
 const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
-var enet_peer = NodeTunnelPeer.new()
+var enet_peer = ENetMultiplayerPeer.new()
 var ip_test = "localhost"
 
 func _on_host_pressed() -> void:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	enet_peer.host()
 	
@@ -25,6 +26,8 @@ func _on_host_pressed() -> void:
 	
 	DisplayServer.clipboard_set(enet_peer.online_id)
 =======
+=======
+>>>>>>> parent of ccb8971 (Node Tunnel Testing)
 	title_screen.hide()
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
@@ -39,12 +42,15 @@ func _on_host_pressed() -> void:
 
 func _on_client_pressed() -> void:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enet_peer.join(%TextEdit.text)
 	
 	await enet_peer.joined
 	
 	title_screen.hide()
 =======
+=======
+>>>>>>> parent of ccb8971 (Node Tunnel Testing)
 	title_screen.hide()
 	enet_peer.create_client(ip_test, PORT)
 	multiplayer.multiplayer_peer = enet_peer
