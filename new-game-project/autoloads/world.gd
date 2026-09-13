@@ -21,6 +21,8 @@ var ip_test = "localhost"
 @onready var photon_host: Button = %"Photon Host"
 @onready var photon_client: Button = %"Photon Client"
 
+var player_name := ""
+
 func _ready() -> void:
 	Fusion.room_joined.connect(_on_room_joined)
 	photon_host.pressed.connect(_connect_room)
@@ -30,6 +32,7 @@ func _ready() -> void:
 func _connect_room():
 	print("clicked connect")
 	var user_id = "user_%d" % randi()
+	player_name = user_id
 	Fusion.connect_to_photon(user_id)
 	Fusion.connected_to_photon.connect(func():
 		var options := FusionRoomOptions.new()
@@ -42,6 +45,7 @@ func _connect_room():
 func _join_room():
 	print("clicked connect")
 	var user_id = "user_%d" % randi()
+	player_name = user_id
 	Fusion.connect_to_photon(user_id)
 	Fusion.connected_to_photon.connect(func():
 		var options := FusionRoomOptions.new()
@@ -55,6 +59,7 @@ func _on_room_joined():
 	var pos = Vector3(0, 1, 0)
 	var player = spawner.spawn()
 	player.position = pos
+	player.name = player_name
 	print("Joined room and spawned player scene")
 
 ###############################################################
@@ -141,7 +146,6 @@ func level_sync(level_path):
 	$Platform.add_child(current_level)
 
 	print("LEVEL LOADED: ", current_level)
-
 @rpc("call_local", "reliable")
 func HUD_display():
 	if $LobbyUI:

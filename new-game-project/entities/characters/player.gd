@@ -70,10 +70,8 @@ func _ready() -> void:
 	add_to_group("players")
 	colour_change()
 
-
-func _enter_tree() -> void:
-	set_multiplayer_authority(str(name).to_int())
-
+#func _enter_tree() -> void:
+	#set_multiplayer_authority(str(name).to_int())
 
 func _physics_process(delta: float) -> void:
 	if !replicator.has_authority():
@@ -190,7 +188,7 @@ func kill_update():
 # ONLY the server is allowed to award points.
 @rpc("any_peer", "call_local", "reliable")
 func add_point():
-	if !multiplayer.is_server():
+	if !replicator.has_authority():
 		return
 
 	score += 1
@@ -215,7 +213,7 @@ func shoot():
 		var bullet = Bullet.instantiate()
 
 		# Remember who fired this bullet.
-		bullet.shooter_id = get_multiplayer_authority()
+		bullet.shooter_id = replicator.get_multiplayer_authority()
 
 		get_tree().current_scene.add_child(bullet)
 
