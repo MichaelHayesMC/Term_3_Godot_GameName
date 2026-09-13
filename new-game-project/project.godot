@@ -26,10 +26,13 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
+<<<<<<< HEAD
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/tube/plugin.cfg")
 
+=======
+>>>>>>> parent of ccb8971 (Node Tunnel Testing)
 [global_group]
 
 global_camera=""
