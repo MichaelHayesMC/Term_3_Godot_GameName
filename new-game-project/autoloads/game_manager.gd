@@ -9,3 +9,5 @@ var players : Array
 var players_ready = 0
 
 var player_chosen = false
+
+var tube_clientm

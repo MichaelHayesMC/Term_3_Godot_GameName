@@ -8,34 +8,69 @@ class_name World
 @export var levels : Array[PackedScene]
 
 #signal player_colour
-
-const PORT = 9999
 const PlayerLoad = preload("res://entities/characters/player.tscn")
 const MouseLoad = preload("res://systems/ui/Mouse Cursor/mouse_decal.tscn")
 
 var enet_peer = ENetMultiplayerPeer.new()
+var tube_client := TubeClient.new()
+var tube_enabled = true
+
+const PORT = 9999
+const TUBE_CONTEXT = preload("uid://c772ag8jxcwo4")
 var ip_test = "localhost"
 
-func _on_host_pressed() -> void:
-	title_screen.hide()
-	enet_peer.create_server(PORT)
-	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_connected.connect(add_player)
+func _ready() -> void:
+	if tube_enabled:
+		tube_client.context = TUBE_CONTEXT
+		get_tree().root.add_child.call_deferred(tube_client)
 	
-	add_player(multiplayer.get_unique_id())
-	$LobbyUI.show()
-	
-	#upnp_setup() # Blueprint to create a online multiplayer hosting and client system unrestricted to the confines of local multiplayer
+	#tube_client = GameManager.tube_clientm
 
-func _on_client_pressed() -> void:
-	title_screen.hide()
-	enet_peer.create_client(ip_test, PORT)
-	multiplayer.multiplayer_peer = enet_peer
-	
-	#player_colour.emit()
+func tube_create():
+	multiplayer.peer_connected.connect(add_player)
+	#multiplayer.peer_disconnected.connect(remove_player)
+	tube_client.create_session()
+	add_player(1)
+
+func tube_join(session_id: String):
+	multiplayer.peer_connected.connect(add_player)
+	#multiplayer.peer_disconnected.connect(remove_player)
+	multiplayer.connected_to_server.connect(on_connected_to_server)
+	tube_client.join_session(session_id)
+
+func on_connected_to_server():
+	add_player(multiplayer.get_unique_id())
+
+func _exit_tree() -> void:
+	if tube_enabled:
+		tube_client.leave_session()
+
+func _on_create_tube_pressed() -> void:
+	tube_create()
+	#add_world()
+
+func _on_join_tube_pressed() -> void:
+	tube_join(%Lineeditsession.text)
+	#multiplayer.connected_to_server.connect(add_world)
+
+#func _on_host_pressed() -> void:
+	#title_screen.hide()
+	#enet_peer.create_server(PORT)
+	#multiplayer.multiplayer_peer = enet_peer
+	#multiplayer.peer_connected.connect(add_player)
+	##multiplayer.peer_disconnected.connect(remove_player)
+	#
+	#add_player(multiplayer.get_unique_id())
+	#$LobbyUI.show()
+
+#func _on_client_pressed() -> void:
+	#title_screen.hide()
+	#enet_peer.create_client(ip_test, PORT)
+	##multiplayer.peer_disconnected.connect(remove_player)
+	#multiplayer.multiplayer_peer = enet_peer
 
 func add_player(peer_id):
-	if !multiplayer.is_server():
+	if !multiplayer.is_server() and multiplayer.multiplayer_peer is ENetMultiplayerPeer:
 		return
 
 	add_player_rpc.rpc(peer_id)
@@ -107,19 +142,3 @@ func HUD_display():
 		$LobbyUI.hide()
 	var new_HUD = HUD.instantiate()
 	add_child(new_HUD)
-
-func upnp_setup():
-	var upnp = UPNP.new()
-	
-	var discover_result = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result) 
-	
-	assert(upnp.get_gateway() and upnp.get_gate_way().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-		
-	var map_result = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-		
-	print("Success! Join Address: %s" % upnp.query_external_address())

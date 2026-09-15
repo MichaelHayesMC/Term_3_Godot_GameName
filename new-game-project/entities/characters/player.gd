@@ -58,16 +58,18 @@ func apply_card(card_data: Dictionary) -> void:
 		"MOVE SPEED +":
 			move_speed_modifier += card_data["value"]
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
 
 func _ready() -> void:
 	GameManager.players.append(name)
 	add_to_group("players")
 	colour_change()
-
-
-func _enter_tree() -> void:
-	set_multiplayer_authority(str(name).to_int())
-
+	
+	%LabelSession.text = Network.tube_client.session_id
+	
+	if !is_multiplayer_authority():
+		return
 
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority():

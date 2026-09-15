@@ -34,6 +34,9 @@ properties/3/path = NodePath("Anchor:scale")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_b0wws"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1438579107 groups=["players"]]
 collision_layer = 4
 collision_mask = 9
@@ -74,3 +77,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvunv")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1540602870]
 replication_config = SubResource("SceneReplicationConfig_g2els")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1341013807]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1508553041]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelSession" type="Label" parent="CanvasLayer/Control" unique_id=925188782]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 51.0
+offset_top = 43.0
+offset_right = 155.0
+offset_bottom = 66.0
+text = "Label Session"
+label_settings = SubResource("LabelSettings_b0wws")

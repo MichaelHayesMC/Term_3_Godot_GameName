@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://coar0w52ewb50"]
 
+[ext_resource type="Script" uid="uid://dj3r6sfepuo0k" path="res://autoloads/World/world.gd" id="1_1ejtd"]
+[ext_resource type="PackedScene" uid="uid://c1y0se7c08qwa" path="res://entities/environment/old/arena.tscn" id="2_lxdpt"]
+[ext_resource type="PackedScene" uid="uid://bj34rktmx0wv0" path="res://entities/environment/old/arena2.tscn" id="3_js6in"]
+[ext_resource type="PackedScene" uid="uid://cfv4rxkda6xi7" path="res://entities/environment/old/arena3.tscn" id="4_hfanp"]
 [ext_resource type="Texture2D" uid="uid://di121otsvx1yl" path="res://entities/environment/new/arenas/Background.jpg" id="5_1ejtd"]
 [ext_resource type="PackedScene" uid="uid://btg117njqy6w6" path="res://title_screen.tscn" id="5_lxdpt"]
 [ext_resource type="PackedScene" uid="uid://dvm600yohx2b0" path="res://entities/environment/new/arenas/Forest/map_1.tscn" id="6_lv8u0"]
@@ -38,6 +42,8 @@ subsurf_scatter_enabled = true
 subsurf_scatter_strength = 1.0
 
 [node name="World" type="Node" unique_id=1774199772]
+script = ExtResource("1_1ejtd")
+levels = Array[PackedScene]([ExtResource("2_lxdpt"), ExtResource("3_js6in"), ExtResource("4_hfanp")])
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=911778433]
 spawn_path = NodePath("../CanvasLayer/PlayerCursors")
